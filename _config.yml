@@ -29,6 +29,9 @@ html:
   baseurl: https://elliottserna.github.io/econometrics
   favicon: _static/favicon.ico
   static_path: ['_static']
+  extra_css:
+  - css/custom.css
+  - css/color.scss
 
 latex:
    latex_documents:

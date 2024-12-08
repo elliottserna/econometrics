@@ -1,0 +1,10 @@
+/* Hide the default logo button */
+.btn__qelogo {
+    display: none;
+  }
+
+/* Hide the contrast button */
+li.btn__contrast {
+    display: none !important;
+}
+
