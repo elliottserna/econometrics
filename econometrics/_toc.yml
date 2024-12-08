@@ -1,0 +1,22 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+
+parts:
+  - caption: Probability & Statistics
+    numbered: true 
+    chapters: 
+    - file: content/statistics/Populations-Samples
+    - file: content/statistics/Central-Tendency
+    - file: content/statistics/Variability
+    - file: content/statistics/Data
+    - file: content/statistics/Variables
+    - file: content/statistics/Probability
+    - file: content/statistics/Estimation
+    - file: content/statistics/Hypothesis-Test
+    - file: content/statistics/Further-Study
+  - caption: Appendix
+    chapters:
+    - file: content/citations
