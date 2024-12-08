@@ -31,7 +31,6 @@ html:
   static_path: ['_static']
   extra_css:
   - css/custom.css
-  - css/color.scss
 
 latex:
    latex_documents:
