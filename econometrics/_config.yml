@@ -17,96 +17,38 @@ parse:
     - substitution
 
 only_build_toc_files: true
-execute:
-  execute_notebooks: "cache"
-  timeout: 2400
 
 repository:
   url: https://github.com/cornellpolicygroup/empirical-manual
   branch: main
 
 bibtex_bibfiles:
-   - _static/book.bib
+   - _static/references.bib
 
 html:
   baseurl: https://elliottserna.github.io/econometrics
+  favicon: _static/favicon.ico
+  theme: quantecon_book_theme
+  static_path: ['_static']
 
 latex:
    latex_documents:
       targetname: econometrics.tex
 
 sphinx:
-  extra_extensions: ['sphinx.ext.linkcheck',
-    'sphinx.ext.mathjax',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.autodoc',  # If documenting Python code
-    'sphinxcontrib.bibtex',
-    'sphinx.ext.todo',  # Optional, for TODO items
-    'sphinx_rediraffe',  # For redirects
-    'sphinx.ext.napoleon',  # Optional, for docstring parsing
-    'tojupyter']
-  config:
-    # false-positive links
-    linkcheck_ignore: ['https://online.stat.psu.edu/stat415/book/export/html/834']
-    bibtex_reference_style: author_year
-    nb_mime_priority_overrides: [
-       # HTML
-       ['html', 'application/vnd.jupyter.widget-view+json', 10],
-       ['html', 'application/javascript', 20],
-       ['html', 'text/html', 30],
-       ['html', 'text/latex', 40],
-       ['html', 'image/svg+xml', 50],
-       ['html', 'image/png', 60],
-       ['html', 'image/jpeg', 70],
-       ['html', 'text/markdown', 80],
-       ['html', 'text/plain', 90],
-       # Jupyter Notebooks
-       ['jupyter', 'application/vnd.jupyter.widget-view+json', 10],
-       ['jupyter', 'application/javascript', 20],
-       ['jupyter', 'text/html', 30],
-       ['jupyter', 'text/latex', 40],
-       ['jupyter', 'image/svg+xml', 50],
-       ['jupyter', 'image/png', 60],
-       ['jupyter', 'image/jpeg', 70],
-       ['jupyter', 'text/markdown', 80],
-       ['jupyter', 'text/plain', 90],
-       # LaTeX
-       ['latex', 'text/latex', 10],
-       ['latex', 'application/pdf', 20],
-       ['latex', 'image/png', 30],
-       ['latex', 'image/jpeg', 40],
-       ['latex', 'text/markdown', 50],
-       ['latex', 'text/plain', 60],
-       # Link Checker
-       ['linkcheck', 'text/plain', 10],
-     ]
-    html_favicon: _static/favicon.ico  
-    html_theme: quantecon_book_theme 
-    html_static_path: ['_static']
-    html_theme_options:
-      authors:
-        - name: "Elliott Serna"  
-          url: "https://elliottserna.github.io"  
-      repository_url: "https://github.com/elliottserna/econometrics"
-      description: "This website presents a series of guides to econometric topics, written by Elliott Serna." 
-      keywords: "Econometrics, Economics, Policy, Data Science, R" 
-    mathjax3_config:
-      tex:
-        macros:
-          "argmax": "arg\\,max"
-          "argmin": "arg\\,min"
-    mathjax_path: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"  # Path to MathJax
-    # Local Redirects
-    rediraffe_redirects:
-      index_toc.md: intro.md
-    tojupyter_static_file_path: ["source/_static", "_static"]
-    tojupyter_target_html: true
-    tojupyter_lang_synonyms: ["R", "r"]  # Language synonyms for R
-    tojupyter_kernels:
-      R:
-        kernelspec:
-          display_name: "R"
-          language: R
-          name: R
-        file_extension: ".R"
-    tojupyter_images_markdown: true
+  extra_extensions:
+    - sphinx.ext.mathjax
+    - sphinx.ext.intersphinx
+  html_theme_options:
+    authors:
+      - name: "Elliott Serna"
+        url: "https://elliottserna.github.io"
+    repository_url: "https://github.com/elliottserna/econometrics"
+    description: "This website presents a series of guides to econometric topics, written by Elliott Serna." 
+    keywords: "Econometrics, Economics, Policy, Data Science" 
+  mathjax3_config:
+    tex:
+      macros:
+        "argmax": "arg\\,max"
+        "argmin": "arg\\,min"
+  mathjax_path: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"  # Path to MathJax
