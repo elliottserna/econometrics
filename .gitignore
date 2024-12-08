@@ -2,3 +2,6 @@ _build
 _archive
 .DS_Store
 lectures
+_static/css/custom2.css
+_static/css/custom2.css.map
+_static/css/custom2.scss
