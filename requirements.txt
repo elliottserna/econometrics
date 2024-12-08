@@ -1,3 +1,4 @@
 jupyter-book
 matplotlib
 numpy
+quantecon-book-theme==0.7.6
