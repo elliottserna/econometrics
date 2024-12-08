@@ -28,7 +28,6 @@ bibtex_bibfiles:
 html:
   baseurl: https://elliottserna.github.io/econometrics
   favicon: _static/favicon.ico
-  theme: quantecon_book_theme
   static_path: ['_static']
 
 latex:
@@ -39,17 +38,18 @@ sphinx:
   extra_extensions:
     - sphinx.ext.mathjax
     - sphinx.ext.intersphinx
-  html_theme: quantecon_book_theme
-  html_theme_options:
-    authors:
-      - name: "Elliott Serna"
-        url: "https://elliottserna.github.io"
-    repository_url: "https://github.com/elliottserna/econometrics"
-    description: "This website presents a series of guides to econometric topics, written by Elliott Serna." 
-    keywords: "Econometrics, Economics, Policy, Data Science" 
-  mathjax3_config:
-    tex:
-      macros:
-        "argmax": "arg\\,max"
-        "argmin": "arg\\,min"
-  mathjax_path: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"  # Path to MathJax
+  config:
+    html_theme: "quantecon_book_theme"
+    html_theme_options:
+      authors:
+        - name: "Elliott Serna"
+          url: "https://elliottserna.github.io"
+      repository_url: "https://github.com/elliottserna/econometrics"
+      description: "This website presents a series of guides to econometric topics, written by Elliott Serna." 
+      keywords: "Econometrics, Economics, Policy, Data Science" 
+    mathjax3_config:
+      tex:
+        macros:
+          "argmax": "arg\\,max"
+          "argmin": "arg\\,min"
+    mathjax_path: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"  # Path to MathJax
