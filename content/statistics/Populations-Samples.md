@@ -6,7 +6,9 @@
 
 **Sample:** A subset of the population (ideally selected randomly and large in size).
 
-> **Note:** "Population" is contextual; it won't *always* mean everyone in the world. We could mean the American population, the European population, the population in Tompkins County, or the population of graduate students at Cornell. In any case, the "population" is the highest unit of generalizability.
+```{epigraph}
+Note: "Population" is contextual; it won't *always* mean everyone in the world. We could mean the American population, the European population, the population in Tompkins County, or the population of graduate students at Cornell. In any case, the "population" is the highest unit of generalizability.
+```
 
 **Statistical Inference:** Drawing a conclusion about some characteristic of a population using a sample.
 
