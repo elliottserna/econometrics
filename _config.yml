@@ -49,7 +49,7 @@ sphinx:
       repository_url: "https://github.com/elliottserna/econometrics"
       description: "This website presents a series of guides to econometric topics, written by Elliott Serna." 
       keywords: "Econometrics, Economics, Policy, Data Science" 
-      dark_logo: "logo-dark"
+      dark_logo: "_static/logo-dark.png"
     mathjax3_config:
       tex:
         macros:
