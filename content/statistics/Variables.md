@@ -1,4 +1,4 @@
-# Statistics: Variables
+# Variables
 
 ## Types of Variables
 

@@ -1,4 +1,4 @@
-# Statistics: Data
+# Data
 
 ## Types of Data
 

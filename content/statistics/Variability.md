@@ -1,4 +1,4 @@
-# Statistics: Measures of Variability
+# Measures of Variability
 
 ## Definitions
 

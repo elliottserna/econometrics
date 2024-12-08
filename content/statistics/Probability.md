@@ -1,4 +1,4 @@
-# Statistics: Probability
+# Probability
 
 ## Definitions
 

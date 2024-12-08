@@ -1,4 +1,4 @@
-# Statistics: Estimation
+# Estimation
 
 ## Definitions:
 

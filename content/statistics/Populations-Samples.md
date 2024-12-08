@@ -1,4 +1,4 @@
-# Statistics: Populations & Samples
+# Populations & Samples
 
 ## Definitions:
 

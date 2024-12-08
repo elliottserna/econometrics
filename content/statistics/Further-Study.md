@@ -1,4 +1,4 @@
-# Statistics: Further Study
+# Further Study
 
 Though this statistics primer touches on most of the foundational statistical concepts topics you will need to know for causal inference, it is not fully comprehensive. There may information we glossed over or omitted entirely that you may want to know.
 
