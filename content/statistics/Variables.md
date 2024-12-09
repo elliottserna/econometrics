@@ -53,7 +53,7 @@ Interval variables are numerical variables where the difference between values i
 
 Ratio variables are like interval variables, but with a meaningful zero point, which allows for the calculation of ratios. This means that you can make meaningful statements about how many times larger one value is compared to another.
 
-- **Example**: Income, weight, and height. A person who earns $100,000 earns twice as much as a person who earns $50,000.
+- **Example**: Income, weight, and height. A person who earns \$100,000 earns twice as much as a person who earns \$50,000.
 
 ### Summary of Variable Types
 
