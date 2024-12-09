@@ -119,3 +119,22 @@ table tr:hover {
   background-color: #ddd !important; /* Change background color on hover */
   color: #333 !important; /* Text color */
 }
+
+/* Disable filters for all images in any mode */
+img {
+  filter: none !important;
+}
+
+/* Remove background color and border-radius adjustments for images in dark mode */
+.bd-content img {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+}
+
+/* Ensure .only-dark and .only-light do not alter display */
+.only-dark,
+.only-dark ~ figcaption,
+.only-light,
+.only-light ~ figcaption {
+  display: block !important; /* Ensure all elements are visible */
+}
