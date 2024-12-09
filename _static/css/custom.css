@@ -64,8 +64,8 @@ table, table th, table td {
 
 /* Header row background and text color */
 table th {
-  background-color: #333 !important; /* Darker background for headers */
-  color: white !important; /* White text for headers */
+  background-color: #adadad !important; /* Darker background for headers */
+  color: #333 !important; 
 }
 
 /* Table rows */
