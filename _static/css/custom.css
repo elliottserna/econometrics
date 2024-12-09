@@ -59,14 +59,6 @@ blockquote {
 /* Custom content styles */
 .qe-page__content {
   table {
-    max-width: 100%;
-    border-collapse: collapse;
-    border: 0;
-    background-color: #fff;
-
-    tbody tr:nth-child(odd) {
-      background-color: #f7f7f7;
-    }
 
     td,
     th {
@@ -99,4 +91,31 @@ blockquote {
   }
 }
 
+/* Ensure all table elements have the custom background and text color */
+table, table th, table td {
+  background-color: #fdfdfd !important; /* Light background color for the table */
+  color: #333 !important; /* Text color */
+}
 
+/* Header row background and text color */
+table th {
+  background-color: #adadad !important; /* Darker background for headers */
+  color: #333 !important; 
+}
+
+/* Table rows */
+table tr:nth-child(even) {
+  background-color: #f2f2f2 !important; /* Light gray background for even rows */
+  color: #333 !important; /* Text color */
+}
+
+table tr:nth-child(odd) {
+  background-color: #ffffff !important; /* White background for odd rows */
+  color: #333 !important; /* Text color */
+}
+
+/* Hover effect for rows */
+table tr:hover {
+  background-color: #ddd !important; /* Change background color on hover */
+  color: #333 !important; /* Text color */
+}
