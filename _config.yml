@@ -30,11 +30,11 @@ html:
   favicon: _static/favicon.ico
   static_path: ['_static']
   extra_css:
-  - css/custom.css
+    - css/custom.css
 
 latex:
-   latex_documents:
-      targetname: econometrics.tex
+  latex_documents:
+    targetname: econometrics.tex
 
 sphinx:
   extra_extensions:
@@ -47,12 +47,12 @@ sphinx:
         - name: "Elliott Serna"
           url: "https://elliottserna.github.io"
       repository_url: "https://github.com/elliottserna/econometrics"
-      description: "This website presents a series of guides to econometric topics, written by Elliott Serna." 
+      description: "This website presents a series of guides to econometric topics, written by Elliott Serna."
       keywords: "Econometrics, Economics, Policy, Data Science" 
-      dark_logo: "_static/logo-dark.png"
+      dark_logo: logo-dark.png
     mathjax3_config:
       tex:
         macros:
           "argmax": "arg\\,max"
           "argmin": "arg\\,min"
-    mathjax_path: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"  # Path to MathJax
+    mathjax_path: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
