@@ -64,12 +64,6 @@ table {
   margin-right: auto !important;
 }
 
-/* Apply padding and centering to table headers and cells */
-th, td {
-  padding: 10px !important; /* Add padding for readability */
-  text-align: center !important; /* Default alignment for readability */
-}
-
 /* Header row background and text color */
 th {
   background-color: #333 !important; /* Darker background for headers */
@@ -88,30 +82,4 @@ tr:nth-child(odd) {
 /* Hover effect for rows */
 tr:hover {
   background-color: #ddd !important; /* Change background color on hover */
-}
-
-/* Adjust caption text styling */
-table caption {
-  text-align: center !important;
-  caption-side: top !important;
-  color: #555 !important; /* Muted text color for the caption */
-}
-
-/* Optional: Scrollable table container */
-.pst-scrollable-table-container {
-  overflow-x: auto !important; /* Horizontal scrolling for wide tables */
-}
-
-/* Custom class for table-right and table-left positioning */
-table.table-right {
-  margin-right: 0 !important;
-}
-
-table.table-left {
-  margin-left: 0 !important;
-}
-
-/* Force tables to reset any conflicting default styles */
-table, th, td, tr {
-  all: unset !important; /* Unsets all inherited styles to ensure custom styles are applied */
 }
