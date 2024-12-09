@@ -99,7 +99,7 @@ table, table th, table td {
 
 /* Header row background and text color */
 table th {
-  background-color: #adadad !important; /* Darker background for headers */
+  background-color: #eeeeee !important; /* Darker background for headers */
   color: #333 !important; 
 }
 
