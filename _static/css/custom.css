@@ -60,8 +60,6 @@ blockquote {
 table {
   background-color: #f9f9f9 !important; /* Light background color for the table */
   color: #333 !important; /* Text color */
-  margin-left: auto !important;
-  margin-right: auto !important;
 }
 
 /* Header row background and text color */
