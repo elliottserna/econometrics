@@ -57,30 +57,30 @@ blockquote {
 }
 
 /* Ensure all table elements have the custom background and text color */
-table {
+table, table th, table td {
   background-color: #f9f9f9 !important; /* Light background color for the table */
   color: #333 !important; /* Text color */
 }
 
 /* Header row background and text color */
-th {
+table th {
   background-color: #333 !important; /* Darker background for headers */
   color: white !important; /* White text for headers */
 }
 
 /* Table rows */
-tr:nth-child(even) {
+table tr:nth-child(even) {
   background-color: #f2f2f2 !important; /* Light gray background for even rows */
   color: #333 !important; /* Text color */
 }
 
-tr:nth-child(odd) {
+table tr:nth-child(odd) {
   background-color: #ffffff !important; /* White background for odd rows */
   color: #333 !important; /* Text color */
 }
 
 /* Hover effect for rows */
-tr:hover {
+table tr:hover {
   background-color: #ddd !important; /* Change background color on hover */
   color: #333 !important; /* Text color */
 }
