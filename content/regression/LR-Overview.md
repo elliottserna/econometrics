@@ -12,7 +12,7 @@
 
 Linear regression serves as a tool for understanding how changes in independent variables affect the dependent variable. It provides insights into the nature of relationships within data.
 
-Both regression and correlation assess the relationship between variables, telling us how they move together, but they differ fundamentally:
+Both regression and correlation assess the relationship between variables, telling us how they move together. However, they differ fundamentally:
 
 - **Correlation** quantifies the strength and direction of a linear relationship between two variables, but it does not account for the causal direction or the influence of other variables.
 - **Regression** not only quantifies the relationship but also allows for predictions of the dependent variable based on the independent variables.
@@ -23,17 +23,19 @@ Both regression and correlation assess the relationship between variables, telli
 
 The keyword in "linear regression" is *linear*. If you've taken linear algebra, you know just how powerful linear forms can be in applications ranging from finding relationships between sets of variables to extrapolating causal inference. And even if you haven't, you have more than likely encountered the power of lines when you search google and get ordered search results, or when you open the weather app and see the weekly weather forecast.
 
-Much of what we will explore in this section on linear regression is predicated on **linearity**, the specific type of relationship between variables in math where a function of the variables follows a straight line when graphed on a coordinate plane.
+Much of what we will explore in this section on linear regression is predicated on **linearity**, the specific type of relationship between variables where a function of the variables follows a straight line when graphed on a coordinate plane.
 
 > **Mathematical Definition of Linearity:**
 >
 >In mathematics, a function $f: \mathbb{R}^n \to \mathbb{R}$ is said to be **linear** if it satisfies the following two properties for all vectors $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$ and all scalars $c \in \mathbb{R}$:
 >
 >1. **Additivity**: 
+>
 >   $$
    f(\mathbf{x} + \mathbf{y}) = f(\mathbf{x}) + f(\mathbf{y})$$
 >
 > 2. **Homogeneity (or Scalar Multiplication)**: 
+> 
 >   $$
    f(c \cdot \mathbf{x}) = c \cdot f(\mathbf{x})$$
 
@@ -272,8 +274,9 @@ Y_{ijt} = \alpha + \beta_1 T_{1it} + \beta_2 T_{2it} + \mathbf{X}^\prime \delta 
 > **Connections to Linear Regression:**
 >
 > Recall the basic form for linear regression:
-> $$
-Y_i = \alpha + \beta X_{i} + \varepsilon_i$$
+> 
+> $$Y_i = \alpha + \beta X_{i} + \varepsilon_i$$
+>
 >
 > The subscript $i$ on the $X$ and $Y$ variables indicate individual $x$ and $y$ values for every individual (element) $i$ in the dataset. $X$ and $Y$, then, can be conceptualized as vectors (columns) in a matrix (the dataset with data on all individuals) in addition to $\varepsilon_i$.
 >
@@ -337,8 +340,7 @@ Y_i = \alpha + \beta X_{i} + \varepsilon_i$$
 >
 > We can write this as a linear combination, representing $Y$ and $X$ as vectors with values for every individual in the dataset:
 >
-> $$ 
-\begin{bmatrix} 740 \\ 710 \\ 810 \\ 942 \\ 908 \\ 790 \end{bmatrix} = 700 + 30\begin{bmatrix} 2 \\ 0 \\ 4 \\ 6 \\ 7 \\ 3 \end{bmatrix} + \begin{bmatrix} -20 \\ 10 \\ -10 \\ +62 \\ -2 \\ 0 \end{bmatrix}$$
+> $$\begin{bmatrix} 740 \\ 710 \\ 810 \\ 942 \\ 908 \\ 790 \end{bmatrix} = 700 + 30\begin{bmatrix} 2 \\ 0 \\ 4 \\ 6 \\ 7 \\ 3 \end{bmatrix} + \begin{bmatrix} -20 \\ 10 \\ -10 \\ +62 \\ -2 \\ 0 \end{bmatrix}$$
 >
 > Which allows us to estimate every individual $y_i$ from every $x_i$ and $\varepsilon_i$.
 

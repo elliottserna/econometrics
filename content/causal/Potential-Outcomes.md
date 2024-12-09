@@ -150,8 +150,7 @@ because the untreated potential outcome ($Y_i(0)$) for treated individuals ($D_i
 >
 > We can extract selection bias from the simple difference in outcomes by first adding and subtracting the counterfactual for the treated ($E[Y_i(0) \mid D_i = 1]$) then consolidating terms:
 >
-> $$
-\begin{align*}
+> $$\begin{align*}
     \delta_{SDO} &= E[Y_i(1) \mid D_i = 1] - E[Y_i(0) \mid D_i = 0] \\
                  &= E[Y_i(1) \mid D_i = 1] \ \underbrace{- E[Y_i(0) \mid D_i = 1] + E[Y_i(1) \mid D_i = 1]}_{\text{Add/Subtract Counterfactual for Treated}} - E[Y_i(0) \mid D_i = 0] \\
                  &= \underbrace{E[Y_i(1) \mid D_i = 1] - E[Y_i(0) \mid D_i = 1]}_{\text{ATT}} + E[Y_i(1) \mid D_i = 1] - E[Y_i(0) \mid D_i = 0] \\
@@ -205,16 +204,14 @@ $$
 >
 > Now recall the formulas for $\delta_{ATE}$:
 > 
-> $$
-\begin{align*}
+> $$\begin{align*}
     \delta_{ATE} &= E[Y_i(1) - Y_i(0)] \\
                  &= \pi \delta_{ATT} + (1 - \pi) \delta_{ATU}
 \end{align*}$$
 >
 > To extract the HTE bias, let's take the previously decomposed SDO and add and subtract the $\delta_{ATE}$, rearrange terms, substitute in the formulas for ATE, then simplify:
 >
-> $$
-\begin{align*}
+> $$\begin{align*}
     \delta_{SDO} &= \delta_{ATT} \ \underbrace{+ \delta_{ATE} - \delta_{ATE}}_{\text{Add/Subtract ATE}} + \text{Selection Bias} \\
                  &= \delta_{ATE} + [-\delta_{ATE} + \delta_{ATT}] + \cdots\\
                  &= \delta_{ATE} + [-(\pi\delta_{ATT} + (1-\pi)\delta_{ATU}) + \delta_{ATT}] + \cdots\\
@@ -225,8 +222,7 @@ $$
 >
 > Meaning:
 >
-> $$
-\begin{align*}
+> $$\begin{align*}
     \delta_{SDO} &= \delta_{ATE} + \text{Selection Bias} + \text{HTE Bias} \\
                  &= \delta_{ATE} + \underbrace{E[Y_i(0) \mid D_i = 1] - E[Y_i(0) \mid D_i = 0]}_{\text{Selection Bias}} \\
                  & \qquad \quad \  + \underbrace{(1-\pi)(\delta_{ATT} - \delta_{ATU})}_{\text{HTE Bias}}
