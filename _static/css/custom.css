@@ -56,31 +56,46 @@ blockquote {
     -webkit-filter: none !important;
 }
 
-/* Ensure all table elements have the custom background and text color */
-table, table th, table td {
-  background-color: #f9f9f9 !important; /* Light background color for the table */
-  color: #333 !important; /* Text color */
-}
+/* Custom content styles */
+.qe-page__content {
+  table {
+    max-width: 100%;
+    border-collapse: collapse;
+    border: 0;
+    background-color: #fff;
 
-/* Header row background and text color */
-table th {
-  background-color: #adadad !important; /* Darker background for headers */
-  color: #333 !important; 
-}
+    tbody tr:nth-child(odd) {
+      background-color: #f7f7f7;
+    }
 
-/* Table rows */
-table tr:nth-child(even) {
-  background-color: #f2f2f2 !important; /* Light gray background for even rows */
-  color: #333 !important; /* Text color */
-}
+    td,
+    th {
+      padding: 0.25rem 0.75rem;
+      text-align: left;
+      vertical-align: top;
+      border: 0;
+      > p {
+        margin: 0;
+      }
+    }
 
-table tr:nth-child(odd) {
-  background-color: #ffffff !important; /* White background for odd rows */
-  color: #333 !important; /* Text color */
-}
+    th {
+      font-weight: bold;
+    }
 
-/* Hover effect for rows */
-table tr:hover {
-  background-color: #ddd !important; /* Change background color on hover */
-  color: #333 !important; /* Text color */
-}
+    thead {
+      tr th {
+        text-align: left !important;
+      }
+
+      th,
+      td {
+        vertical-align: bottom;
+        border: 0;
+        border-top: 0;
+        border-bottom: 1px solid #e1e1e1;
+      }
+    }
+  }
+
+
