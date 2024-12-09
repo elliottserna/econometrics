@@ -59,6 +59,7 @@ The **cumulative distribution function (CDF)** gives the probability that a rand
   $$
   F(x) = P(X \leq x) = \int_{-\infty}^{x} f(t) \, dt
   $$
+
   where $f(t)$ is the probability density function (PDF).
 
 ### Joint and Conditional Probability Distributions
@@ -96,11 +97,13 @@ E(X) = \mu
 $$
 
 - **Formula** (for discrete random variables):
+  
   $$
   E(X) = \sum_{i} x_i \cdot P(X = x_i)
   $$
 
 - **Formula** (for continuous random variables):
+  
   $$
   E(X) = \int_{-\infty}^{\infty} x \cdot f(x) \, dx
   $$
@@ -124,12 +127,14 @@ In many situations, we're interested in the expected value of a random variable,
 
 The **conditional expectation** of a random variable $X$, given another random variable $Y$, represents the expected value of $X$ when $Y$ takes on a particular value. It helps us refine our predictions for $X$ based on knowledge of $Y$.
 
-#### Formula (for discrete random variables):
+- Formula (for discrete random variables):
+  
 $$
 E(X \mid Y = y) = \sum_{i} x_i \cdot P(X = x_i \mid Y = y)
 $$
 
-#### Formula (for continuous random variables):
+- Formula (for continuous random variables):
+  
 $$
 E(X \mid Y = y) = \int_{-\infty}^{\infty} x \cdot f_{X|Y}(x \mid y) \, dx
 $$
@@ -167,11 +172,13 @@ $$
 $$
 
 - **Formula** (for discrete random variables):
+  
   $$
   \text{Var}(X) = \sum_{i} P(X = x_i) \cdot (x_i - \mu)^2
   $$
 
 - **Formula** (for continuous random variables):
+  
   $$
   \text{Var}(X) = \int_{-\infty}^{\infty} (x - \mu)^2 \cdot f(x) \, dx
   $$
@@ -220,7 +227,7 @@ The **normal distribution** is a continuous probability distribution that is sym
 - $\mu$: The mean of the distribution, which represents the center of the distribution.
 - $\sigma$: The standard deviation, which measures the spread of the distribution around the mean.
   
-#### **Explanation**:
+#### Explanation:
 
 The term $\frac{1}{\sigma \sqrt{2\pi}}$ is a normalization constant that ensures the total area under the PDF curve equals 1, which is a requirement for all probability density functions.
 
@@ -234,7 +241,7 @@ $$
 
 The **CDF** provides the probability that a random variable $X$ will take on a value less than or equal to $x$. In other words, it accumulates the probabilities from the left tail of the distribution up to the point $x$.
 
-#### **Explanation**:
+#### Explanation:
 
 The CDF is calculated by integrating the PDF from $-\infty$ to $x$. This integral sums all the infinitesimally small probabilities (densities) from the left end of the distribution up to the specified value $x$.
   
@@ -300,77 +307,123 @@ In general, CLT applies when $n\geq 30$ at minimum. But, the actual minimum size
 
 > **Note:** We will return to how to calculate sample size later in the Causal Inference section on power.
 
-## Overview of Probability Distributions
+## Overview of Special Distributions
 
-1. **Bernoulli Distribution**: 
-   - Represents a single trial with two possible outcomes: success ($1$) and failure ($0$).
-   - **Probability Mass Function (PMF)**: 
-     
-     $$
-     P(X = x) = p^x (1 - p)^{1 - x} \quad \text{for } x = 0, 1
-     $$
+### The Bernoulli and Binomial Distributions
 
-   - Parameter: $p$ (probability of success).
+#### The Bernoulli Distribution 
+Models a single trial with two outcomes: success ($1$) or failure ($0$).
 
-2. **Binomial Distribution**:
-   - Describes the number of successes in $n$ independent Bernoulli trials.
-   - **PMF**:
-     
-     $$
-     P(X = k) = \binom{n}{k} p^k (1 - p)^{n - k}
-     $$
+  **Formula (PMF)**:  
+  $$ P(X = x) = p^x (1-p)^{1-x}, \; x \in \{0, 1\} $$
+  where $p$ is the probability of success.
 
-     where $k = 0, 1, \dots, n$.
-   - Parameters: $n$ (number of trials), $p$ (probability of success).
+#### The Binomial Distribution 
+Models the number of successes in $n$ independent Bernoulli trials.  
 
-3. **Geometric Distribution**:
-   - Models the number of trials until the first success in a series of Bernoulli trials.
-   - **PMF**:
-     
-     $$
-     P(X = k) = (1 - p)^{k - 1} p
-     $$
+  **Formula (PMF)**:  
+  $$ P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \; k = 0, 1, \ldots, n $$
+  where $p$ is the probability of success.
 
-     where $k = 1, 2, 3, \dots$.
-   - Parameter: $p$ (probability of success).
+#### The Negative Binomial Distribution
+Models the number of trials needed to achieve $r$ successes in a sequence of independent Bernoulli trials.  
 
-4. **Poisson Distribution**:
-   - Represents the number of events occurring in a fixed interval, assuming the events happen independently.
-   - **PMF**:
+**Formula (PMF)**:  
+$$ P(X = k) = \binom{k+r-1}{r-1} p^r (1-p)^k, \; k = 0, 1, 2, \ldots $$  
+where $p$ is the probability of success and $r > 0$ is the desired number of successes.
 
-     $$
-     P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}
-     $$
+### The Geometric Distributions
 
-     where $k = 0, 1, 2, \dots$.
-   - Parameter: $\lambda$ (average rate of occurrence).
+#### The Geometric Distribution
+Models the number of trials until the first success in a series of Bernoulli trials. 
 
-5. **Exponential Distribution**:
-   - Models the time between events in a Poisson process.
-   - **PDF**:
-  
-     $$
-     f(x) = \lambda e^{-\lambda x} \quad \text{for } x \geq 0
-     $$
+**Formula (PMF)**:  
+$$ P(X = k) = (1 - p)^{k - 1} p $$
+where $k = 1, 2, 3, \dots$ and $p$ is the probability of success.
 
-   - Parameter: $\lambda$ (rate of occurrence).
+#### The Hypergeometric Distribution
+Models the probability of $k$ successes in $n$ draws from a population of $N$ items containing $K$ successes, *without replacement*.  
 
-6. **Uniform Distribution**:
-   - All outcomes are equally likely within a defined range.
-   - **PDF (continuous)**:
-     
-     $$
-     f(x) = \frac{1}{b - a} \quad \text{for } a \leq x \leq b
-     $$
+**Formula (PMF)**:  
+$$ P(X = k) = \frac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}, \; \max(0, n-(N-K)) \leq k \leq \min(n, K) $$
 
-   - Parameters: $a$ (minimum), $b$ (maximum).
+### The Poisson Distribution
+Models the number of events occurring in a fixed interval of time or space, given a constant average rate $\lambda$. 
 
-7. **Chi-Squared Distribution**:
-   - A distribution of the sum of squares of $k$ independent standard normal random variables.
-   - **PDF**:
-     
-     $$
-     f(x; k) = \frac{1}{2^{k/2} \Gamma(k/2)} x^{k/2 - 1} e^{-x/2} \quad \text{for } x > 0
-     $$
+**Formula (PMF)**:  
+$$ P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \; k = 0, 1, 2, \ldots $$  
+where $\lambda > 0$ is the mean number of occurrences.
 
-   - Parameter: $k$ (degrees of freedom).
+### The Exponential Distribution
+Models the time between events in a Poisson process.
+
+**Formula (PDF)**: 
+$$ f(x) = \lambda e^{-\lambda x} \quad \text{for } x \geq 0 $$
+where $\lambda$ is the rate of occurrence.
+
+### The Normal Distribution
+A continuous distribution describing a symmetric, bell-shaped curve defined by its mean $\mu$ and standard deviation $\sigma$.  
+
+**Formula (PDF)**:  
+$$ f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \; -\infty < x < \infty $$  
+where $\mu$ is the mean and $\sigma^2$ is the variance.
+
+### The Gamma Distribution
+A continuous distribution modeling the time until $k$ events occur in a Poisson process.  
+
+**Formula (PDF)**:  
+$$ f(x) = \frac{\beta^\alpha x^{\alpha-1} e^{-\beta x}}{\Gamma(\alpha)}, \; x > 0 $$  
+where $\alpha > 0$ is the shape parameter, $\beta > 0$ is the rate parameter, and $\Gamma(\alpha)$ is the gamma function.
+
+#### Gamma Function ($\Gamma(x)$):  
+The Gamma function is a continuous extension of the factorial function for real and complex numbers. It is defined as:  
+$$
+\Gamma(x) = \int_0^\infty t^{x-1} e^{-t} \, dt, \quad x > 0
+$$
+for integer $n$, $\Gamma(n) = (n-1)!$.
+
+### The Beta Distribution
+A continuous distribution defined on $[0, 1]$, commonly used to model probabilities or proportions.  
+
+**Formula (PDF)**:  
+$$ f(x) = \frac{x^{\alpha-1} (1-x)^{\beta-1}}{\text{B}(\alpha, \beta)}, \; 0 < x < 1 $$  
+where $\alpha, \beta > 0$ are shape parameters, and $\text{B}(\alpha, \beta)$ is the beta function.
+
+#### Beta Function ($B(x, y)$):  
+The Beta function is another special function related to the Gamma function, often used in probability and statistics. It is defined as:  
+$$
+B(x, y) = \int_0^1 t^{x-1} (1-t)^{y-1} \, dt, \quad x > 0, y > 0
+$$
+It can also be expressed in terms of the Gamma function as:  
+$$
+B(x, y) = \frac{\Gamma(x)\Gamma(y)}{\Gamma(x + y)}
+$$
+
+### The Multinomial Distribution
+A generalization of the binomial distribution for multiple outcomes. It models the counts of outcomes in $n$ independent trials with $k$ categories.  
+
+**Formula (PMF)**:  
+$$ P(X_1 = x_1, \ldots, X_k = x_k) = \frac{n!}{x_1! \cdots x_k!} p_1^{x_1} \cdots p_k^{x_k} $$  
+where $p_i$ is the probability of the $i$-th category, $\sum_{i=1}^k p_i = 1$, and $\sum_{i=1}^k x_i = n$.
+
+### The Bivariate Normal Distribution
+Describes two jointly normally distributed variables $X$ and $Y$ with means $\mu_X, \mu_Y$, variances $\sigma_X^2, \sigma_Y^2$, and correlation $\rho$.  
+
+**Formula (PDF)**:  
+$$
+f(x, y) = \frac{1}{2\pi \sigma_X \sigma_Y \sqrt{1-\rho^2}} \exp \left(-\frac{1}{2(1-\rho^2)} \left[\frac{(x-\mu_X)^2}{\sigma_X^2} + \frac{(y-\mu_Y)^2}{\sigma_Y^2} - \frac{2\rho(x-\mu_X)(y-\mu_Y)}{\sigma_X \sigma_Y} \right]\right)
+$$
+
+### The Uniform Distribution
+All outcomes are equally likely within a defined range.
+
+**Formula (PDF)**:
+$$ f(x) = \frac{1}{b - a} \quad \text{for } a \leq x \leq b $$
+where $a$ is the minimum and $b$ the maximum.
+
+### The Chi-Squared Distribution
+A distribution of the sum of squares of $k$ independent standard normal random variables.
+
+**Formula (PDF)**:     
+$$ f(x; k) = \frac{1}{2^{k/2} \Gamma(k/2)} x^{k/2 - 1} e^{-x/2} \quad \text{for } x > 0 $$
+where $k$ is the degrees of freedom.
