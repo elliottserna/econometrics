@@ -46,3 +46,72 @@ blockquote {
     }
   }
 }
+
+/* Ensure images appear normally in light mode */
+.qe-page__content .image-reference img,
+.qe-page__content figure img,
+.qe-page__content .cell_output img {
+    filter: none !important;
+    -ms-filter: none !important;
+    -webkit-filter: none !important;
+}
+
+/* Ensure all table elements have the custom background and text color */
+table {
+  background-color: #f9f9f9 !important; /* Light background color for the table */
+  color: #333 !important; /* Text color */
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Apply padding and centering to table headers and cells */
+th, td {
+  padding: 10px !important; /* Add padding for readability */
+  text-align: center !important; /* Default alignment for readability */
+}
+
+/* Header row background and text color */
+th {
+  background-color: #333 !important; /* Darker background for headers */
+  color: white !important; /* White text for headers */
+}
+
+/* Table rows */
+tr:nth-child(even) {
+  background-color: #f2f2f2 !important; /* Light gray background for even rows */
+}
+
+tr:nth-child(odd) {
+  background-color: #ffffff !important; /* White background for odd rows */
+}
+
+/* Hover effect for rows */
+tr:hover {
+  background-color: #ddd !important; /* Change background color on hover */
+}
+
+/* Adjust caption text styling */
+table caption {
+  text-align: center !important;
+  caption-side: top !important;
+  color: #555 !important; /* Muted text color for the caption */
+}
+
+/* Optional: Scrollable table container */
+.pst-scrollable-table-container {
+  overflow-x: auto !important; /* Horizontal scrolling for wide tables */
+}
+
+/* Custom class for table-right and table-left positioning */
+table.table-right {
+  margin-right: 0 !important;
+}
+
+table.table-left {
+  margin-left: 0 !important;
+}
+
+/* Force tables to reset any conflicting default styles */
+table, th, td, tr {
+  all: unset !important; /* Unsets all inherited styles to ensure custom styles are applied */
+}
