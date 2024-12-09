@@ -1,4 +1,4 @@
-# Regression: Overview of Linear Regression
+# Linear Regression & the Fundamentals of Linear Algebra
 
 ## Definitions:
 

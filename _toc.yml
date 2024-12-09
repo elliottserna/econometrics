@@ -17,6 +17,14 @@ parts:
     - file: content/statistics/Estimation
     - file: content/statistics/Hypothesis-Test
     - file: content/statistics/Further-Study
+  - caption: Linear Regression
+    numbered: true 
+    chapters: 
+    - file: content/regression/LR-Overview
+  - caption: Causal Inference
+    numbered: true 
+    chapters: 
+    - file: content/causal/Potential-Outcomes
   - caption: Appendix
     chapters:
     - file: content/citations
