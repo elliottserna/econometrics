@@ -4,7 +4,7 @@ This roadmap follows the progression of topics this book will eventually cover, 
 
 ## Foundations of Econometrics
 
-### **Prerequisites**
+### **Primers**
 - Basic statistics and probability
 - Linear algebra (matrix operations, eigenvalues, etc.)
 - Introductory calculus
@@ -40,12 +40,12 @@ This roadmap follows the progression of topics this book will eventually cover, 
    - Marginal effects interpretation
 
 7. **Introduction to Panel Data**
-   - Fixed effects and random effects models
+   - Fixed effects models
    - Time-invariant vs. time-varying variables
 
 8. **Applied Econometrics**
    - Applications in labor, health, and development economics
-   - Data visualization and diagnostics (using R, Stata, or Python)
+   - Data visualization and diagnostics (using R; some Python)
 
 ## Intermediate Econometrics
 
@@ -117,9 +117,7 @@ This roadmap follows the progression of topics this book will eventually cover, 
    - Machine learning for econometrics
    - Applications of principal components analysis (PCA)
 
----
-
-## **4. Research-Level Econometrics (Ph.D. Level)**
+## Research-Level Econometrics
 
 ### **Core Topics**
 1. **Advanced Bayesian Methods**
