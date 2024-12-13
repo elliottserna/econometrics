@@ -1,4 +1,4 @@
-# Linear Regression & the Fundamentals of Linear Algebra
+# Fundamentals of Linear Algebra & Regression
 
 ## Definitions:
 

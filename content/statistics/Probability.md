@@ -36,7 +36,7 @@ A **probability distribution** describes how the probabilities are distributed o
 
 - **Discrete Probability Distributions**: These apply to random variables that take on a finite or countable number of possible values. The **probability mass function (PMF)** gives the probability that a discrete random variable is exactly equal to some value.
 
-    - **Example**: The probability distribution of rolling a die, where the possible outcomes are 1 through 6, each with probability $P(X = x) = \frac{1}{6}$.
+    - **Example**: The probability distribution of rolling a die, where the possible outcomes are 1 through 6, each with probability $\text{Pr}(X = x) = \frac{1}{6}$.
 
 - **Continuous Probability Distributions**: These apply to random variables that can take an infinite number of values. The **probability density function (PDF)** gives the likelihood of the variable taking a value within a particular range, as the probability of taking any specific value is technically 0.
 
@@ -51,13 +51,13 @@ The **cumulative distribution function (CDF)** gives the probability that a rand
 - **Formula** (for discrete random variables):
 
   $$
-  F(x) = P(X \leq x) = \sum_{x_i \leq x} P(X = x_i)
+  F(x) = \text{Pr}(X \leq x) = \sum_{x_i \leq x} \text{Pr}(X = x_i)
   $$
 
 - **Formula** (for continuous random variables):
 
   $$
-  F(x) = P(X \leq x) = \int_{-\infty}^{x} f(t) \, dt
+  F(x) = \text{Pr}(X \leq x) = \int_{-\infty}^{x} f(t) \, dt
   $$
 
   where $f(t)$ is the probability density function (PDF).
@@ -67,7 +67,7 @@ The **cumulative distribution function (CDF)** gives the probability that a rand
 - **Joint Probability Distribution**: The joint probability distribution of two random variables $X$ and $Y$ specifies the probability of different combinations of outcomes for $X$ and $Y$.
   
   $$
-  P(X, Y)
+  \text{Pr}(X, Y)
   $$
 
 ![Joint Probability Distribution](/content/images/causal_inference/joint_prob_distr.png)
@@ -75,13 +75,13 @@ The **cumulative distribution function (CDF)** gives the probability that a rand
 - **Conditional Probability**: The **conditional probability** of $Y$ given $X$ is the probability that $Y$ occurs, given that $X$ has already occurred:
   
   $$
-  P(Y| X = x) = \frac{P(X = x, Y = y)}{P(X = x)}
+  \text{Pr}(Y| X = x) = \frac{\text{Pr}(X = x, Y = y)}{\text{Pr}(X = x)}
   $$
 
   Or, in other notation:
 
   $$
-  P(Y|X) = \frac{P(X \cap Y)}{P(X)}
+  \text{Pr}(Y|X) = \frac{\text{Pr}(X \cap Y)}{\text{Pr}(X)}
   $$
 
 ## Expected Value
@@ -93,33 +93,33 @@ The **expected value** of a random variable is a measure of its central tendency
 In other words, the expected value of a variable is equal to its mean, or the weighted average of all possible values, where the weights are the probabilities of each value occurring.:
 
 $$
-E(X) = \mu
+\mathbb{E}(X) = \mu
 $$
 
 - **Formula** (for discrete random variables):
   
   $$
-  E(X) = \sum_{i} x_i \cdot P(X = x_i)
+  \mathbb{E}(X) = \sum_{i} x_i \cdot \text{Pr}(X = x_i)
   $$
 
 - **Formula** (for continuous random variables):
   
   $$
-  E(X) = \int_{-\infty}^{\infty} x \cdot f(x) \, dx
+  \mathbb{E}(X) = \int_{-\infty}^{\infty} x \cdot f(x) \, dx
   $$
 
 
 ### Properties of Expected Value
 
-1. **Constant Rule:** If $a$ is constant, $E(a) = a$
+1. **Constant Rule:** If $a$ is constant, $\mathbb{E}(a) = a$
    
-2. **Linearity of Expectation:** If $a$ and $b$ are constants, $E(aX + b) = a \cdot E(X) + b$
+2. **Linearity of Expectation:** If $a$ and $b$ are constants, $\mathbb{E}(aX + b) = a \cdot \mathbb{E}(X) + b$
 
-3. **Non-Linearity of Squaring:** In general, $E(X^2) \neq [E(X)]^2$
+3. **Non-Linearity of Squaring:** In general, $\mathbb{E}(X^2) \neq [\mathbb{E}(X)]^2$
    
-4. **Additivity of Expectations:** If $X$ and $Y$ are random variables, $E(X \pm Y) = E(X) \pm E(Y)$
+4. **Additivity of Expectations:** If $X$ and $Y$ are random variables, $\mathbb{E}(X \pm Y) = \mathbb{E}(X) \pm \mathbb{E}(Y)$
 
-5. **General Linearity of Expectation:** If $a$ and $b$ are constants, $E(aX \pm bY) = a \cdot E(X) \pm b \cdot E(Y)$
+5. **General Linearity of Expectation:** If $a$ and $b$ are constants, $\mathbb{E}(aX \pm bY) = a \cdot \mathbb{E}(X) \pm b \cdot \mathbb{E}(Y)$
 
 ### Conditional Expectation
 
@@ -130,13 +130,13 @@ The **conditional expectation** of a random variable $X$, given another random v
 - Formula (for discrete random variables):
   
 $$
-E(X \mid Y = y) = \sum_{i} x_i \cdot P(X = x_i \mid Y = y)
+\mathbb{E}(X \mid Y = y) = \sum_{i} x_i \cdot \text{Pr}(X = x_i \mid Y = y)
 $$
 
 - Formula (for continuous random variables):
   
 $$
-E(X \mid Y = y) = \int_{-\infty}^{\infty} x \cdot f_{X|Y}(x \mid y) \, dx
+\mathbb{E}(X \mid Y = y) = \int_{-\infty}^{\infty} x \cdot f_{X|Y}(x \mid y) \, dx
 $$
 
 Here, $f_{X|Y}(x \mid y)$ represents the conditional probability density function of $X$ given $Y = y$.
@@ -152,7 +152,7 @@ Conditional expectation allows us to focus on a subset of data or scenarios by a
 In general, the relationship between conditional expectation and standard expectation can be written as:
 
 $$
-E(X) = E\left[E(X \mid Y)\right]
+\mathbb{E}(X) = E\left[\mathbb{E}(X \mid Y)\right]
 $$
 
 This equation reflects that the overall expected value of $X$ can be broken down into the weighted average of its conditional expectations across all possible values of $Y$. This is known as the **Law of Iterated Expectations**. This property is particularly useful in probability theory and statistics for breaking complex expectations into simpler components.
@@ -167,14 +167,14 @@ The **variance** of a random variable is defined as the expected value of the sq
 
 $$
 \begin{align*}
-\text{Var}(X) &= E\left[(X - \mu)^2\right] \\ &= E(X^2) - [E(X)]^2
+\text{Var}(X) &= E\left[(X - \mu)^2\right] \\ &= \mathbb{E}(X^2) - [\mathbb{E}(X)]^2
 \end{align*}
 $$
 
 - **Formula** (for discrete random variables):
   
   $$
-  \text{Var}(X) = \sum_{i} P(X = x_i) \cdot (x_i - \mu)^2
+  \text{Var}(X) = \sum_{i} \text{Pr}(X = x_i) \cdot (x_i - \mu)^2
   $$
 
 - **Formula** (for continuous random variables):
@@ -212,7 +212,7 @@ The **normal distribution** is a continuous probability distribution that is sym
 - **Cumulative distribution function (CDF)** of the normal distribution:
   
   $$
-  F(x) = P(X \leq x) = \int_{-\infty}^{x} \frac{1}{\sigma \sqrt{2\pi}} \exp \left( -\frac{(t - \mu)^2}{2\sigma^2} \right) dt
+  F(x) = \text{Pr}(X \leq x) = \int_{-\infty}^{x} \frac{1}{\sigma \sqrt{2\pi}} \exp \left( -\frac{(t - \mu)^2}{2\sigma^2} \right) dt
   $$
 
 ### Probability Density Function (PDF)
@@ -236,7 +236,7 @@ The expression $\exp \left( -\frac{(x - \mu)^2}{2\sigma^2} \right)$ gives the ex
 ### Cumulative Distribution Function (CDF)
 
 $$
-F(x) = P(X \leq x) = \int_{-\infty}^{x} \frac{1}{\sigma \sqrt{2\pi}} \exp \left( -\frac{(t - \mu)^2}{2\sigma^2} \right) dt
+F(x) = \text{Pr}(X \leq x) = \int_{-\infty}^{x} \frac{1}{\sigma \sqrt{2\pi}} \exp \left( -\frac{(t - \mu)^2}{2\sigma^2} \right) dt
 $$
 
 The **CDF** provides the probability that a random variable $X$ will take on a value less than or equal to $x$. In other words, it accumulates the probabilities from the left tail of the distribution up to the point $x$.
@@ -315,21 +315,21 @@ In general, CLT applies when $n\geq 30$ at minimum. But, the actual minimum size
 Models a single trial with two outcomes: success ($1$) or failure ($0$).
 
   **Formula (PMF)**:  
-  $$ P(X = x) = p^x (1-p)^{1-x}, \; x \in \{0, 1\} $$
+  $$ \text{Pr}(X = x) = p^x (1-p)^{1-x}, \; x \in \{0, 1\} $$
   where $p$ is the probability of success.
 
 #### The Binomial Distribution 
 Models the number of successes in $n$ independent Bernoulli trials.  
 
   **Formula (PMF)**:  
-  $$ P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \; k = 0, 1, \ldots, n $$
+  $$ \text{Pr}(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \; k = 0, 1, \ldots, n $$
   where $p$ is the probability of success.
 
 #### The Negative Binomial Distribution
 Models the number of trials needed to achieve $r$ successes in a sequence of independent Bernoulli trials.  
 
 **Formula (PMF)**:  
-$$ P(X = k) = \binom{k+r-1}{r-1} p^r (1-p)^k, \; k = 0, 1, 2, \ldots $$  
+$$ \text{Pr}(X = k) = \binom{k+r-1}{r-1} p^r (1-p)^k, \; k = 0, 1, 2, \ldots $$  
 where $p$ is the probability of success and $r > 0$ is the desired number of successes.
 
 ### The Geometric Distributions
@@ -338,20 +338,20 @@ where $p$ is the probability of success and $r > 0$ is the desired number of suc
 Models the number of trials until the first success in a series of Bernoulli trials. 
 
 **Formula (PMF)**:  
-$$ P(X = k) = (1 - p)^{k - 1} p $$
+$$ \text{Pr}(X = k) = (1 - p)^{k - 1} p $$
 where $k = 1, 2, 3, \dots$ and $p$ is the probability of success.
 
 #### The Hypergeometric Distribution
 Models the probability of $k$ successes in $n$ draws from a population of $N$ items containing $K$ successes, *without replacement*.  
 
 **Formula (PMF)**:  
-$$ P(X = k) = \frac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}, \; \max(0, n-(N-K)) \leq k \leq \min(n, K) $$
+$$ \text{Pr}(X = k) = \frac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}, \; \max(0, n-(N-K)) \leq k \leq \min(n, K) $$
 
 ### The Poisson Distribution
 Models the number of events occurring in a fixed interval of time or space, given a constant average rate $\lambda$. 
 
 **Formula (PMF)**:  
-$$ P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \; k = 0, 1, 2, \ldots $$  
+$$ \text{Pr}(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \; k = 0, 1, 2, \ldots $$  
 where $\lambda > 0$ is the mean number of occurrences.
 
 ### The Exponential Distribution
@@ -403,7 +403,7 @@ $$
 A generalization of the binomial distribution for multiple outcomes. It models the counts of outcomes in $n$ independent trials with $k$ categories.  
 
 **Formula (PMF)**:  
-$$ P(X_1 = x_1, \ldots, X_k = x_k) = \frac{n!}{x_1! \cdots x_k!} p_1^{x_1} \cdots p_k^{x_k} $$  
+$$ \text{Pr}(X_1 = x_1, \ldots, X_k = x_k) = \frac{n!}{x_1! \cdots x_k!} p_1^{x_1} \cdots p_k^{x_k} $$  
 where $p_i$ is the probability of the $i$-th category, $\sum_{i=1}^k p_i = 1$, and $\sum_{i=1}^k x_i = n$.
 
 ### The Bivariate Normal Distribution

@@ -74,8 +74,8 @@ The average causal effect of the treatment on the entire population is given by:
 
 $$
 \begin{align*}
-    \delta_{ATE} &= E[Y_i(1) - Y_i(0)] \\
-               &= E[\delta_i]
+    \delta_{ATE} &= \mathbb{E}[Y_i(1) - Y_i(0)] \\
+               &= \mathbb{E}[\delta_i]
 \end{align*}
 $$
 
@@ -97,8 +97,8 @@ The average effect of the treatment among those who received it:
 
 $$
 \begin{align*}
-    \delta_{ATT} &= E[Y_i(1) - Y_i(0) \mid D_i = 1] \\
-               &= E[\delta_i \mid D_i = 1]
+    \delta_{ATT} &= \mathbb{E}[Y_i(1) - Y_i(0) \mid D_i = 1] \\
+               &= \mathbb{E}[\delta_i \mid D_i = 1]
 \end{align*}
 $$
 
@@ -110,8 +110,8 @@ The average effect of the treatment on those who did not receive it:
 
 $$
 \begin{align*}
-    \delta_{ATU} &= E[Y_i(1) - Y_i(0) \mid D_i = 0] \\
-           &= E[\delta_i \mid D_i = 0]
+    \delta_{ATU} &= \mathbb{E}[Y_i(1) - Y_i(0) \mid D_i = 0] \\
+           &= \mathbb{E}[\delta_i \mid D_i = 0]
 \end{align*}
 $$
 
@@ -125,8 +125,8 @@ For this reason, the closest estimation of causal effects ($Y_i(1) - Y_i(0)$) we
 
 $$
 \begin{align*}
-    \delta_{SDO} &= E[Y_i(1) \mid D_i = 1] - E[Y_i(0) \mid D_i = 0] \\
-                 &= E[Y_i \mid D_i = 1] - E[Y_i \mid D_i = 0]
+    \delta_{SDO} &= \mathbb{E}[Y_i(1) \mid D_i = 1] - \mathbb{E}[Y_i(0) \mid D_i = 0] \\
+                 &= \mathbb{E}[Y_i \mid D_i = 1] - \mathbb{E}[Y_i \mid D_i = 0]
 \end{align*}
 $$
 
@@ -141,20 +141,20 @@ Selection is an issue because individuals who choose to receive a treatment may 
 Selection bias is defined as
 
 $$
-\text{Selection Bias} = E[Y_i(0) \mid D_i = 1] - E[Y_i(0) \mid D_i = 0]
+\text{Selection Bias} = \mathbb{E}[Y_i(0) \mid D_i = 1] - \mathbb{E}[Y_i(0) \mid D_i = 0]
 $$
 
 because the untreated potential outcome ($Y_i(0)$) for treated individuals ($D_i = 1$) may differ from the untreated potential outcome for untreated individuals ($D_i = 0$), even if the treatment had no effect.
 
 > ### Decomposing SDO: Selection Bias
 >
-> We can extract selection bias from the simple difference in outcomes by first adding and subtracting the counterfactual for the treated ($E[Y_i(0) \mid D_i = 1]$) then consolidating terms:
+> We can extract selection bias from the simple difference in outcomes by first adding and subtracting the counterfactual for the treated ($\mathbb{E}[Y_i(0) \mid D_i = 1]$) then consolidating terms:
 >
 > $$\begin{align*}
-    \delta_{SDO} &= E[Y_i(1) \mid D_i = 1] - E[Y_i(0) \mid D_i = 0] \\
-                 &= E[Y_i(1) \mid D_i = 1] \ \underbrace{- E[Y_i(0) \mid D_i = 1] + E[Y_i(1) \mid D_i = 1]}_{\text{Add/Subtract Counterfactual for Treated}} - E[Y_i(0) \mid D_i = 0] \\
-                 &= \underbrace{E[Y_i(1) \mid D_i = 1] - E[Y_i(0) \mid D_i = 1]}_{\text{ATT}} + E[Y_i(1) \mid D_i = 1] - E[Y_i(0) \mid D_i = 0] \\
-                 &= \delta_{ATT} + \underbrace{E[Y_i(0) \mid D_i = 1] - E[Y_i(0) \mid D_i = 0]}_{\text{Selection Bias}}
+    \delta_{SDO} &= \mathbb{E}[Y_i(1) \mid D_i = 1] - \mathbb{E}[Y_i(0) \mid D_i = 0] \\
+                 &= \mathbb{E}[Y_i(1) \mid D_i = 1] \ \underbrace{- \mathbb{E}[Y_i(0) \mid D_i = 1] + \mathbb{E}[Y_i(1) \mid D_i = 1]}_{\text{Add/Subtract Counterfactual for Treated}} - \mathbb{E}[Y_i(0) \mid D_i = 0] \\
+                 &= \underbrace{\mathbb{E}[Y_i(1) \mid D_i = 1] - \mathbb{E}[Y_i(0) \mid D_i = 1]}_{\text{ATT}} + \mathbb{E}[Y_i(1) \mid D_i = 1] - \mathbb{E}[Y_i(0) \mid D_i = 0] \\
+                 &= \delta_{ATT} + \underbrace{\mathbb{E}[Y_i(0) \mid D_i = 1] - \mathbb{E}[Y_i(0) \mid D_i = 0]}_{\text{Selection Bias}}
 \end{align*}$$
 
 ### Positive (Beneficial) Selection
@@ -205,7 +205,7 @@ $$
 > Now recall the formulas for $\delta_{ATE}$:
 > 
 > $$\begin{align*}
-    \delta_{ATE} &= E[Y_i(1) - Y_i(0)] \\
+    \delta_{ATE} &= \mathbb{E}[Y_i(1) - Y_i(0)] \\
                  &= \pi \delta_{ATT} + (1 - \pi) \delta_{ATU}
 \end{align*}$$
 >
@@ -224,7 +224,7 @@ $$
 >
 > $$\begin{align*}
     \delta_{SDO} &= \delta_{ATE} + \text{Selection Bias} + \text{HTE Bias} \\
-                 &= \delta_{ATE} + \underbrace{E[Y_i(0) \mid D_i = 1] - E[Y_i(0) \mid D_i = 0]}_{\text{Selection Bias}} \\
+                 &= \delta_{ATE} + \underbrace{\mathbb{E}[Y_i(0) \mid D_i = 1] - \mathbb{E}[Y_i(0) \mid D_i = 0]}_{\text{Selection Bias}} \\
                  & \qquad \quad \  + \underbrace{(1-\pi)(\delta_{ATT} - \delta_{ATU})}_{\text{HTE Bias}}
 \end{align*}$$
 
@@ -237,7 +237,7 @@ When treatment effect heterogeneity is unaccounted for, the estimated average tr
 The **independence assumption** is critical for identifying causal effects in observational studies. It states that the potential outcomes are independent of treatment assignment:
 
 $$
-(Y_i(0), Y_i(1)) \perp D_i
+D_i \perp\!\!\!\perp Y_i(0), Y_i(1)
 $$
 
 This doesn't mean that treatment ($D_i$) doesn’t affect outcomes ($Y_i$). It just means that how treatment is assigned is unrelated to what the outcomes would be with or without that assignment mechanism.
@@ -245,15 +245,15 @@ This doesn't mean that treatment ($D_i$) doesn’t affect outcomes ($Y_i$). It j
 **If treatment is independent of potential outcomes**, there is no selection bias, meaning:
 
 $$
-E[Y_i(1) \mid D_i = 1] = E[Y_i(1) \mid D_i = 0] = E[Y_i(1)] \\
-E[Y_i(0) \mid D_i = 1] = E[Y_i(0) \mid D_i = 0] = E[Y_i(0)]
+\mathbb{E}[Y_i(1) \mid D_i = 1] = \mathbb{E}[Y_i(1) \mid D_i = 0] = \mathbb{E}[Y_i(1)] \\
+\mathbb{E}[Y_i(0) \mid D_i = 1] = \mathbb{E}[Y_i(0) \mid D_i = 0] = \mathbb{E}[Y_i(0)]
 $$
 
 Thus, 
 
 $$\delta_{SDO} = \delta_{ATE} = \delta_{ATT} = \delta_{ATU}$$
 
-> **Note:** Randomness ***guarantees*** independence. Treatment, then, is independence of potential outcomes if it is assigned randomly.
+> **Note:** Randomness ***guarantees*** independence. Treatment, then, is independent of potential outcomes if it is assigned randomly.
 
 ## Stable Unit Treatment Value Assumption (SUTVA)
 

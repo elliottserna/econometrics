@@ -29,7 +29,7 @@ The standard error, simply put, is the standard deviation of some sample statist
 For the sample mean, for example:
 
 $$
-SE(\bar{x}) = \frac{\sigma}{\sqrt{n}}
+\text{SE}(\bar{x}) = \frac{\sigma}{\sqrt{n}}
 $$
 
 where $\sigma$ is the population standard deviation and $n$ is the sample size.
@@ -43,13 +43,13 @@ When evaluating estimators, several important properties guide us in determining
 **Bias** refers to whether an estimator systematically overestimates or underestimates the true population parameter. An estimator is **unbiased** if its expected value equals the population parameter:
 
 $$
-E(\hat{\theta}) = \theta
+\mathbb{E}(\hat{\theta}) = \theta
 $$
 
-If $E(\hat{\theta}) \neq \theta$, the estimator is biased. A biased estimator consistently misses the true value. We measure bias as the difference between $E(\hat{\theta})$ and $\theta$:
+If $\mathbb{E}(\hat{\theta}) \neq \theta$, the estimator is biased. A biased estimator consistently misses the true value. We measure bias as the difference between $\mathbb{E}(\hat{\theta})$ and $\theta$:
 
 $$
-\mathrm{Bias}(\hat{\theta}) = E(\hat{\theta}) - \theta
+\mathrm{Bias}(\hat{\theta}) = \mathbb{E}(\hat{\theta}) - \theta
 $$
 
 #### Bias of an Estimator
@@ -211,7 +211,7 @@ L(\mu) = \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(X_i - \
 The **mean squared error (MSE)** combines both bias and variance to give an overall measure of an estimator's accuracy:
 
 $$
-MSE(\hat{\theta}) = E[(\hat{\theta} - \theta)^2] = \text{Var}(\hat{\theta}) + \text{Bias}(\hat{\theta})^2
+\text{MSE}(\hat{\theta}) = \mathbb{E}[(\hat{\theta} - \theta)^2] = \text{Var}(\hat{\theta}) + \text{Bias}(\hat{\theta})^2
 $$
 
 An estimator with low MSE has both low bias and low variance, making it a reliable estimate of the population parameter.
@@ -289,9 +289,9 @@ The **$t$-distribution** is used instead of the normal distribution when the sam
 
 > **Note:** In most (if not all) cases, the true population standard deviation is *not* known, meaning the $t$-distribution is the one we will use most.
 
-### Degrees of Freedom ($df$)
+### Degrees of Freedom ($d$)
 
-The shape of the $t$-distribution depends on the **degrees of freedom** ($df$), which is typically equal to $n - 1$, where $n$ is the sample size. 
+The shape of the $t$-distribution depends on the **degrees of freedom** ($d$), which is typically equal to $n - 1$, where $n$ is the sample size. 
 
 As $n$ increases, the $t$-distribution approaches the normal distribution.
 

@@ -70,7 +70,7 @@ $$
 or, more formally put:
 
 $$
-\text{Test Statistic} = \frac{\hat{\theta}-\theta_0}{SE(\hat{\theta})}
+\text{Test Statistic} = \frac{\hat{\theta}-\theta_0}{\text{SE}(\hat{\theta})}
 $$
 
 The distribution of the test statistic must be determined (e.g., normal distribution for large samples, $t$-distribution for small samples) to construct the test statistic.
