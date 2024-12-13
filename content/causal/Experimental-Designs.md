@@ -85,10 +85,14 @@ With this, you ask: Is $\hat{\delta}$ an unbiased estimate of $\delta_{ATE}$? Or
 >
 > The identifying assumptions of OLS estimation are:
 >
-> 1. **Linearity:** $$y_i = \sum^k_{j=1} \beta_j x_{ij}^{p} + \varepsilon_i$$
-> 2. **No Perfect Colinearity:** $$\text{Rank}(\mathbf{X}) = k$$
-> 3. **Spherical Error Variance:** $$\text{Var}[\boldsymbol{\varepsilon}] = \sigma^2 \mathbf{I}_n$$
-> 4. **Strict Exogeneity:** $$\mathbb{E}[\varepsilon_i \ | \ \mathbf{V}_i] = 0$$
+> 1. **Linearity:** 
+> $$y_i = \sum^k_{j=1} \beta_j x_{ij}^{p} + \varepsilon_i$$
+> 2. **No Perfect Colinearity:** 
+> $$\text{Rank}(\mathbf{X}) = k$$
+> 3. **Spherical Error Variance:** 
+> $$\text{Var}[\boldsymbol{\varepsilon}] = \sigma^2 \mathbf{I}_n$$
+> 4. **Strict Exogeneity:** 
+> $$\mathbb{E}[\varepsilon_i \ | \ \mathbf{V}_i] = 0$$
 > 
 > in addition to the implied assumption of random sampling, no spillover effects, and perfect compliance.
 
@@ -488,9 +492,7 @@ we estimate:
 $$\hat{\delta} = \frac{\text{Cov}(\tilde{D}, Y)}{\text{Var}(\tilde{D})} \rightarrow \mathbb{E}[\hat{\delta}] = \delta$$
 
 
-In this case, we interpret $\hat{\delta}$ to be the average change in $Y$ from a one-unit change in $D$ **holding $\mathbf{X}$ fixed**. Or, put another way:
-
-> *Among units with same value of $\mathbf{X}_i$, what is the difference in $Y_i$ for those with $D_i = 0$ vs. $D_i = 1$?*
+In this case, we interpret $\hat{\delta}$ to be the average change in $Y$ from a one-unit change in $D$ **holding $\mathbf{X}$ fixed**. Or, put another way: *Among units with same value of $\mathbf{X}_i$, what is the difference in $Y_i$ for those with $D_i = 0$ vs. $D_i = 1$?*
 
 Holding $\mathbf{X}_i$ fixed, then, corrects for imbalance, reducing any bias associated with it.
 
@@ -506,64 +508,65 @@ $$Y_i(D) = \alpha + \delta D_i + \mathbf{X}^{\prime}_i \beta + \varepsilon_i$$
 
 where $D \in \{0, 1\}$ is a treatment indicator, $\mathbf{X}$ is a set of observable pre-treatment characteristics, and the $\varepsilon$ is an error term capturing unobservable characteristics affecting the outcome $Y_i(D)$. 
 
- ```{margin} **Proof $\mathbb{E}[\varepsilon_i \ | \ \mathbf{X}] = 0 \leftrightarrow \text{Cov}(\varepsilon_i, X_j) \ \forall i, j$
-
-#### Definitions
-1. **Covariance**:
-
-   $$\text{Cov}(\varepsilon_i, X_j) = \mathbb{E}[\varepsilon_i] - \mathbb{E}[\varepsilon_i X_j] - \mathbb{E}[X_j]$$
-
-   Expanding:
-
-   $$\text{Cov}(\varepsilon_i, X_j) = \mathbb{E}[\varepsilon_i X_j] - \mathbb{E}[\varepsilon_i] \ \mathbb{E}[X_j]$$
-
-2. **Strict Exogeneity** implies:
-
-   $$\mathbb{E}[\varepsilon_i \mid X] = 0$$
-
-   This means $\varepsilon_i$ is mean-independent of $X$, so $\mathbb{E}[\varepsilon_i]$ is constant and $\mathbb{E}[\varepsilon_i \mid X]$ depends on no elements of $X$.
-
-#### Step 1: Expand $\mathbb{E}[\varepsilon_i X_j]$
-By the **law of total expectation**:
-
-$$\mathbb{E}[\varepsilon_i X_j] = \mathbb{E}[\mathbb{E}[\varepsilon_i X_j \mid X]]$$
-
-Using the **properties of conditional expectation**, $X_j$ is treated as known when conditioned on $X$:
-
-$$\mathbb{E}[\varepsilon_i X_j \mid X] = X_j \mathbb{E}[\varepsilon_i \mid X]$$
-
-Substituting $\mathbb{E}[\varepsilon_i \mid X] = 0$:
-
-$$\mathbb{E}[\varepsilon_i X_j \mid X] = X_j \cdot 0 = 0$$
-
-Thus:
-
-$$\mathbb{E}[\varepsilon_i X_j] = \mathbb{E}[0] = 0.$$
-
-#### Step 2: Expand $\mathbb{E}[\varepsilon_i] \cdot \mathbb{E}[X_j]$
-The marginal expectation $\mathbb{E}[\varepsilon_i]$ can be written as:
-
-$$\mathbb{E}[\varepsilon_i] = \mathbb{E}[\mathbb{E}[\varepsilon_i \mid X]]$$
-
-Since $\mathbb{E}[\varepsilon_i \mid X] = 0$:
-
-$$\mathbb{E}[\varepsilon_i] = \mathbb{E}[0] = 0$$
-
-Thus:
-
-$$\mathbb{E}[\varepsilon_i] \cdot \mathbb{E}[X_j] = 0 \cdot \mathbb{E}[X_j] = 0$$
-
-#### Step 3: Combine Results
-Using the results from Steps 1 and 2:
-
-$$\text{Cov}(\varepsilon_i, X_j) = \mathbb{E}[\varepsilon_i X_j] - \mathbb{E}[\varepsilon_i]\mathbb{E}[X_j]$$
-
-Substituting:
-
-$$\text{Cov}(\varepsilon_i, X_j) = 0 - 0 = 0$$
-```
-
 Under strict exogeneity (unconfoundedness), $\mathbb{E}[\varepsilon_i \ | \ \mathbf{X}] = 0$. This means the error term, uncorrelated with all observed covariates $X$, captures only unobservable characteristics, which ensures no omitted variable bias (OVB) as no $X_i^ {omitted} \in \varepsilon_i$. This also means $\mathbf{X}_i$ and $\varepsilon_i$ capture the full sets of observable and unobservable characteristics affecting potential outcomes respectively.
+
+>### Proof that $\mathbb{E}[\varepsilon_i \ | \ \mathbf{X}] = 0 \leftrightarrow \text{Cov}(\varepsilon_i, X_j) \ \forall i, j$
+>
+>#### Definitions
+>1. **Covariance**:
+>
+>$$\begin{align*}
+   \text{Cov}(\varepsilon_i, X_j) &= \mathbb{E}[\varepsilon_i] - \mathbb{E}[\varepsilon_i X_j] - \mathbb{E}[X_j] \\
+   &= \mathbb{E}[\varepsilon_i X_j] - \mathbb{E}[\varepsilon_i] \ \mathbb{E}[X_j]
+\end{align*}$$
+>
+> 2. **Strict Exogeneity**:
+>
+>$$\mathbb{E}[\varepsilon_i \mid X] = 0$$
+>
+>This means $\varepsilon_i$ is mean-independent of $X$, so $\mathbb{E}[\varepsilon_i]$ is constant and $\mathbb{E}[\varepsilon_i \mid X]$ depends on no elements of $X$.
+>
+>#### Step 1: Expand $\mathbb{E}[\varepsilon_i X_j]$
+>
+>By the **law of total expectation**:
+>
+>$$\mathbb{E}[\varepsilon_i X_j] = \mathbb{E}[\mathbb{E}[\varepsilon_i X_j \mid X]]$$
+>
+>Using the **properties of conditional expectation**, $X_j$ is treated as known when conditioned on $X$:
+>
+>$$\mathbb{E}[\varepsilon_i X_j \mid X] = X_j \mathbb{E}[\varepsilon_i \mid X]$$
+>
+>Substituting $\mathbb{E}[\varepsilon_i \mid X] = 0$:
+>
+>$$\mathbb{E}[\varepsilon_i X_j \mid X] = X_j \cdot 0 = 0$$
+>
+>Thus:
+>
+>$$\mathbb{E}[\varepsilon_i X_j] = \mathbb{E}[0] = 0.$$
+>
+>#### Step 2: Expand $\mathbb{E}[\varepsilon_i] \cdot \mathbb{E}[X_j]$
+>
+>The marginal expectation $\mathbb{E}[\varepsilon_i]$ can be written as:
+>
+>$$\mathbb{E}[\varepsilon_i] = \mathbb{E}[\mathbb{E}[\varepsilon_i \mid X]]$$
+>
+>Since $\mathbb{E}[\varepsilon_i \mid X] = 0$:
+>
+>$$\mathbb{E}[\varepsilon_i] = \mathbb{E}[0] = 0$$
+>
+>Thus:
+>
+>$$\mathbb{E}[\varepsilon_i] \cdot \mathbb{E}[X_j] = 0 \cdot \mathbb{E}[X_j] = 0$$
+>
+>#### Step 3: Combine Results
+>
+>Using the results from Steps 1 and 2:
+>
+>$$\text{Cov}(\varepsilon_i, X_j) = \mathbb{E}[\varepsilon_i X_j] - \mathbb{E}[\varepsilon_i]\mathbb{E}[X_j]$$
+>
+>Substituting:
+>
+>$$\text{Cov}(\varepsilon_i, X_j) = 0 - 0 = 0$$
 
 Expressing the population regression model, then, as a conditional expectation, we have:
 
