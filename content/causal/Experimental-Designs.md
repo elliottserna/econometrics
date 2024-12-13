@@ -86,12 +86,19 @@ With this, you ask: Is $\hat{\delta}$ an unbiased estimate of $\delta_{ATE}$? Or
 > The identifying assumptions of OLS estimation are:
 >
 > 1. **Linearity:** 
+> 
 > $$y_i = \sum^k_{j=1} \beta_j x_{ij}^{p} + \varepsilon_i$$
+> 
 > 2. **No Perfect Colinearity:** 
+> 
 > $$\text{Rank}(\mathbf{X}) = k$$
+> 
 > 3. **Spherical Error Variance:** 
+> 
 > $$\text{Var}[\boldsymbol{\varepsilon}] = \sigma^2 \mathbf{I}_n$$
+> 
 > 4. **Strict Exogeneity:** 
+> 
 > $$\mathbb{E}[\varepsilon_i \ | \ \mathbf{V}_i] = 0$$
 > 
 > in addition to the implied assumption of random sampling, no spillover effects, and perfect compliance.
@@ -114,11 +121,11 @@ This is a strong assumption to satisfy, but, in our case, it's met because treat
 
 > Randomness is the key of a randomized experimental design. The randomness of treatment assignment *guarantees* the exogeneity of treatment from all variables by breaking any systematic relationship between the treatment and both the error term and the pre-treatment variables.:
 >
-> $$D_i \perp Y_i(D), \mathbf{X}_i, \varepsilon_i $$
+> $$D_i \perp\!\!\!\perp Y_i(D), \mathbf{X}_i, \varepsilon_i $$
 
 This subtle mechanism by which the randomness of treatment assignment is not only exogenous but independent of all other characteristics $\mathbf{V}$ points to the key identifying assumption of randomized experiments: that treatment is randomly assigned and thus independent of potential outcomes:
 
-$$D_i \perp Y_i(0), Y_i(1)$$
+$$D_i \perp\!\!\!\perp Y_i(0), Y_i(1)$$
 
 This identifying assumption is also known as unconditional independence.
 
@@ -126,21 +133,21 @@ This identifying assumption is also known as unconditional independence.
 >
 >One of the bedrock assumptions in causal inference is **conditional independence** of treatment assignment:
 >
->$$D_i \perp Y_i(0), Y_i(1) \ | \ \mathbf{X}_i$$
+>$$D_i \perp\!\!\!\perp Y_i(0), Y_i(1) \ | \ \mathbf{X}_i$$
 >
 >This assumption holds that, after accounting for the full set of pre-treatment characteristics that determine outcomes ($\mathbf{X}_i$), treatment is independent of potential outcomes. In observational studies where treatment is not randomly assigned, conditional independence allows the econometrician to recover an unbiased estimate of the treatment effect, provided that strict exogeneity holds (i.e., all relevant predictors are included in the regression).
 >
 >In the context of experiments, randomization strengthens the independence assumption. Recall from the chapter on [Potential Outcomes Framework](/content/causal/Potential-Outcomes.md) that random assignment guarantees **unconditional independence** of treatment from potential outcomes:
 >
->$$D_i \perp Y_i(0), Y_i(1)$$
+>$$D_i \perp\!\!\!\perp Y_i(0), Y_i(1)$$
 >
 >This follows from the fact that randomization ensures treatment is independent of all variables, observed or unobserved:
 >
->$$D_i \perp Y_i(D), \mathbf{X}_i, \varepsilon_i$$
+>$$D_i \perp\!\!\!\perp Y_i(D), \mathbf{X}_i, \varepsilon_i$$
 >
->While $D_i \perp Y_i(0), Y_i(1) \ | \ \mathbf{X}_i$ applies generally, including in observational studies, randomization ensures that $D_i \perp \mathbf{X}_i$, eliminating any systematic relationship between treatment and pre-treatment characteristics. Thus, in randomized experiments, unconditional independence subsumes conditional independence. However, this stronger assumption of **unconditional independence only holds if randomization is properly conducted**.
+>While $D_i \perp\!\!\!\perp Y_i(0), Y_i(1) \ | \ \mathbf{X}_i$ applies generally, including in observational studies, randomization ensures that $D_i \perp\!\!\!\perp \mathbf{X}_i$, eliminating any systematic relationship between treatment and pre-treatment characteristics. Thus, in randomized experiments, unconditional independence subsumes conditional independence. However, this stronger assumption of **unconditional independence only holds if randomization is properly conducted**.
 >
->Finally, note that even under randomization, conditioning on $X_j \in \mathbf{X}_i$ remains valid. Since $D_i \perp \mathbf{X}_i$, conditioning on $\mathbf{X}_i$ introduces no additional bias, as there is no systematic correlation between treatment and pre-treatment characteristics to account for.
+>Finally, note that even under randomization, conditioning on $X_j \in \mathbf{X}_i$ remains valid. Since $D_i \perp\!\!\!\perp \mathbf{X}_i$, conditioning on $\mathbf{X}_i$ introduces no additional bias, as there is no systematic correlation between treatment and pre-treatment characteristics to account for.
 >
 >  See Appendix A for a rigorous exploration of the strict exogeneity and independence assumptions as they relate to experimental designs.
 
@@ -175,7 +182,7 @@ However, when $D_i$ is perfectly randomized, it is independent of all other vari
 >- The sample consist of $n$ units.
 >
 >**Randomization Assumption:** Letting treatment be assigned randomly, $D_i$ is independent of any pre-treatment characteristics $\mathbf{X}_i$. Formally:
->$$D_i \perp \mathbf{X}_i$$
+>$$D_i \perp\!\!\!\perp \mathbf{X}_i$$
 >
 >This implies that the probability of receiving treatment does not depend on any element of $\mathbf{X}_i$:
 >
@@ -314,7 +321,7 @@ While compelling, it still holds that, even if it's known than an imbalance pre-
 >
 >where $\frac{\text{Cov}(Y_i(0), D_i)}{\text{Var}(D)}$ is a bias term.
 >
->If $\text{Cov}(Y_i(0), D_i) = 0$ (i.e., $D_i \perp Y_i$), the bias term is zero and we recover an unbiased estimate $\hat{\delta}$. If, however, $\text{Cov}(Y_i(0), D_i) \neq 0$, $\hat{\delta}$ is biased. 
+>If $\text{Cov}(Y_i(0), D_i) = 0$ (i.e., $D_i \perp\!\!\!\perp Y_i$), the bias term is zero and we recover an unbiased estimate $\hat{\delta}$. If, however, $\text{Cov}(Y_i(0), D_i) \neq 0$, $\hat{\delta}$ is biased. 
 >
 >Let's understand, then, how imbalance could lead independence of treatment and outcomes to fail:
 >
@@ -325,7 +332,7 @@ While compelling, it still holds that, even if it's known than an imbalance pre-
    &= \text{Cov}(\mathbf{X}^{\prime}_i \boldsymbol{\gamma}, D_i) + \text{Cov}(\varepsilon_i, D_i)
 \end{align*}$$
 >
->Given randomization, conditional on all confounding characteristics being specified in the deterministic component of the regression, $\varepsilon_i \perp D_i$, meaning $\text{Cov}(\varepsilon_i, D_i) = 0$. Therefore:
+>Given randomization, conditional on all confounding characteristics being specified in the deterministic component of the regression, $\varepsilon_i \perp\!\!\!\perp D_i$, meaning $\text{Cov}(\varepsilon_i, D_i) = 0$. Therefore:
 >
 >$$\text{Cov}(Y_i(0), D_i) = \text{Cov}(\mathbf{X}^{\prime}_i \boldsymbol{\gamma}, D_i)$$
 >
@@ -345,7 +352,7 @@ While compelling, it still holds that, even if it's known than an imbalance pre-
 >
 >$$\text{Pr}(D_i = 1 \ | \ \mathbf{X}_i) = \text{Pr}(D_i = 0 \ | \ \mathbf{X}_i) = \text{Pr}(D_i)$$
 >
->In this case, $D_i \perp \mathbf{X}_i$ and $\text{Cov}(D_i, \mathbf{X}_i) = 0$
+>In this case, $D_i \perp\!\!\!\perp \mathbf{X}_i$ and $\text{Cov}(D_i, \mathbf{X}_i) = 0$
 >
 >When, by random chance, however, the distribution of $\mathbf{X}_i$ is not equal across groups, the probability of receiving treatment *is* related to the set of pre-treatment characteristics $\mathbf{X}_i$. Given random assignment, these characteristics don't *cause* $D_i$ per se, but they are systematically related by virtue of a given characteristic (or set of characteristics) being disproportionately represented in one group over another. Formally, this means:
 >
@@ -451,7 +458,7 @@ Including baseline controls in the regression include:
 
 #### Increase Precision
 
-Suppose $D_i \perp \mathbf{X}_i$ (as is true under randomization) and the distribution of $\mathbf{X}_i$ is balanced across treatment and control groups. Recall that, when including controls:
+Suppose $D_i \perp\!\!\!\perp \mathbf{X}_i$ (as is true under randomization) and the distribution of $\mathbf{X}_i$ is balanced across treatment and control groups. Recall that, when including controls:
 
 $$\hat{\delta} = \frac{\text{Cov}(\tilde{D}, Y)}{\text{Var}(\tilde{D})}$$
 
@@ -459,7 +466,7 @@ where $\tilde{D}_i$ is residual variation after controlling for $\mathbf{X}_i$:
 
 $$D_i = \hat{\gamma_0} + \mathbf{X}_i \hat{\boldsymbol{\gamma}} + \tilde{D}_i$$
 
-Because $D_i \perp \mathbf{X}_i$, variation in $\tilde{D}_i = D_i$ since $\mathbf{X}_i$ explains no variation in $D_i$. Therefore:
+Because $D_i \perp\!\!\!\perp \mathbf{X}_i$, variation in $\tilde{D}_i = D_i$ since $\mathbf{X}_i$ explains no variation in $D_i$. Therefore:
 
 $$\hat{\delta} = \frac{\text{Cov}(\tilde{D}, Y)}{\text{Var}(\tilde{D})} \approx \frac{\text{Cov}(D, Y)}{\text{Var}(D)} \rightarrow \mathbb{E}[\hat{\delta}] = \delta$$
 
@@ -586,23 +593,23 @@ $$f_{D|Y(D),X}(d|y_0, y_1, x, \varepsilon) = f_{D|X}(d|x, \varepsilon), \quad \f
 
 Or otherwise put:
 
-$$D_i \perp Y_i(D)$$
+$$D_i \perp\!\!\!\perp Y_i(D)$$
 
-In a potential outcomes framework, because treatment itself doesn't *cause* potential outcomes (i.e., it has no predictive power), we can assert $D_i \perp Y_i(D)$ if and only if the assignment of treatment is not itself informed by endogenous characteristics (i.e., if $D_i$ is uncorrelated with observed and unobserved pre-treatment characteristics $\mathbf{X}_i$ and $\varepsilon_i$). Under random assignment, however, the exogeneity of $D$ derives from the very nature of randomness. Random assignment, then, ensures: 
+In a potential outcomes framework, because treatment itself doesn't *cause* potential outcomes (i.e., it has no predictive power), we can assert $D_i \perp\!\!\!\perp Y_i(D)$ if and only if the assignment of treatment is not itself informed by endogenous characteristics (i.e., if $D_i$ is uncorrelated with observed and unobserved pre-treatment characteristics $\mathbf{X}_i$ and $\varepsilon_i$). Under random assignment, however, the exogeneity of $D$ derives from the very nature of randomness. Random assignment, then, ensures: 
 
-$$D_i \perp \mathbf{X}_i, \varepsilon_i$$ 
+$$D_i \perp\!\!\!\perp \mathbf{X}_i, \varepsilon_i$$ 
 
 If we hold the strict exogeneity assumption (unconfoundedness) assumption to be true, this also gives:
 
-$$\varepsilon_i \perp D_i, \mathbf{X}_i$$
+$$\varepsilon_i \perp\!\!\!\perp D_i, \mathbf{X}_i$$
 
-given $\varepsilon_i \perp D_i$ under randomness and $\varepsilon_i \perp \mathbf{X}_i$ under the exogeneity assumption.
+given $\varepsilon_i \perp\!\!\!\perp D_i$ under randomness and $\varepsilon_i \perp\!\!\!\perp \mathbf{X}_i$ under the exogeneity assumption.
 
 > In a context without randomization, if the same covariates $\mathbf{X}$ that cause potential outcomes cause assignment of treatment (selection), there is an association---a dependence---between treatment assignment and the potential outcomes. This is what leads to selection bias.
 
 So, given randomness, we have an exogenous $D_i$ uncorrelated with both the vector of covariates $\mathbf{X}_i$ and the error $\varepsilon_i$. The assignment of treatment ($D$), then, having no predictive power of its own, only has an effect on $Y_i(D)$ through characteristics $\mathbf{X}$. Or, put another way, the fact a treated individual was randomly assigned treatment didn't change the 'value' of their outcome $Y_i$, it merely put them into a scenario where their observable characteristics produced their observed outcome $Y_i(D)$. "Conditioning"---or accounting for---the effect of $\mathbf{X}$ on $Y_i({D})$---then, means the assignment of treatment is conditionally independent of potential outcomes, given by:
 
-$$D_i \perp Y_i(0), Y_i(1) \ | \ \mathbf{X}_i$$
+$$D_i \perp\!\!\!\perp Y_i(0), Y_i(1) \ | \ \mathbf{X}_i$$
 
 following the Dawid (1979) conditional independence notation. This is what is known as the conditional independence assumption.
 
@@ -618,15 +625,15 @@ To evaluate the exogeneity of treatment, we want to prove:
 
 $$\text{Pr}(D_i = d \ | \ Y_i(0), Y_i(1), \mathbf{X}_i) = \text{Pr}(D_i \ | \ \mathbf{X}_i)$$
 
-I.e., if we prove that treatment is conditionally independent from all potential outcomes, $D_i \perp Y_i(0), Y_i(1) \ | \ \mathbf{X}_i$, the exogeneity assumption for treatment holds.
+I.e., if we prove that treatment is conditionally independent from all potential outcomes, $D_i \perp\!\!\!\perp Y_i(0), Y_i(1) \ | \ \mathbf{X}_i$, the exogeneity assumption for treatment holds.
 
 Because $\varepsilon_i$ is a function of $Y_i(0)$ and $Y_i(1)$ is itself a function of $Y_i(0)$, we can assert:
 
 $$\text{Pr}(D_i = d \ | \ Y_i(0), Y_i(1), \mathbf{X}_i) = \text{Pr}(D_i \ | \ \varepsilon_i, \mathbf{X}_i)$$
 
-This is akin to saying that the probability of being assigned to treatment (or not) is contingent solely on the observed and unobserved characteristics of an inividual $i$. This doesn't prove exogeneity yet given $\varepsilon_i = f(Y_i(D))$; this just rearranges the expression into a form where we're explicitly conditioning on the stochastic and deterministic components that determine $Y_i(D)$. For exogeneity to hold, it must be true that $D_i \perp \varepsilon_i, \mathbf{X}_i$.
+This is akin to saying that the probability of being assigned to treatment (or not) is contingent solely on the observed and unobserved characteristics of an inividual $i$. This doesn't prove exogeneity yet given $\varepsilon_i = f(Y_i(D))$; this just rearranges the expression into a form where we're explicitly conditioning on the stochastic and deterministic components that determine $Y_i(D)$. For exogeneity to hold, it must be true that $D_i \perp\!\!\!\perp \varepsilon_i, \mathbf{X}_i$.
 
-But as we established earlier, valid random assignment of treatment guarantees $D_i \perp \varepsilon_i, \mathbf{X}_i$ and gives $D_i \perp Y_i(0), Y_i(1) \ | \ \mathbf{X}_i$. With $D_i$ being an exogenous regressor, it follows:
+But as we established earlier, valid random assignment of treatment guarantees $D_i \perp\!\!\!\perp \varepsilon_i, \mathbf{X}_i$ and gives $D_i \perp\!\!\!\perp Y_i(0), Y_i(1) \ | \ \mathbf{X}_i$. With $D_i$ being an exogenous regressor, it follows:
 
 $$\text{Pr}(D_i \ | \ \varepsilon_i, \mathbf{X}_i) = \text{Pr}(D_i \ | \ \mathbf{X}_i)$$
 
