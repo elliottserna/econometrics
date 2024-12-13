@@ -26,7 +26,6 @@ parts:
     chapters: 
     - file: content/causal/Potential-Outcomes
     - file: content/causal/Experimental-Designs
-
   - caption: Appendix
     chapters:
     - file: content/citations
