@@ -254,7 +254,7 @@ Two common balance tests include:
 ### Pairwise Balance Tests
 Pairwise Balance Tests tests compare individual covariates between the treatment and control groups. To do this, we run the following regression:
 
-$$ X_{ji} = \theta_0 + \theta_1 D_i + u_i $$
+$$ X_{ij} = \theta_0 + \theta_1 D_i + u_i $$
 
 We then perform a **$\mathbf{t}$-test** on the coefficient $\theta_1$ to check if there's a difference in the mean value of a covariate $X_j \in \mathbf{X}_i$ between the treatment and control groups. Under the null hypothesis $H_0: \theta_1 = 0$, balance would hold if $\hat{\theta}_1 = 0$.
 
@@ -502,6 +502,30 @@ $$\hat{\delta} = \frac{\text{Cov}(\tilde{D}, Y)}{\text{Var}(\tilde{D})} \rightar
 In this case, we interpret $\hat{\delta}$ to be the average change in $Y$ from a one-unit change in $D$ **holding $\mathbf{X}$ fixed**. Or, put another way: *Among units with same value of $\mathbf{X}_i$, what is the difference in $Y_i$ for those with $D_i = 0$ vs. $D_i = 1$?*
 
 Holding $\mathbf{X}_i$ fixed, then, corrects for imbalance, reducing any bias associated with it.
+
+> Note: In any case, better than controlling for $\mathbf{X}_i$ *ex post*, is to randomize treatment in a way that avoids imbalance in $\mathbf{X}_i$ *ex ante*.
+
+### Bad Controls
+
+So far, an underlying assumption driving our discussion of baseline controls is that the controls included are *pre-treatment* characteristics; that is, these are traits observable *before* treatment and, furthermore, before randomization. But why must these controls be pre-treatment? Why can't we include characteristics measures after baseline?
+
+For the sake of example, let $X_{ij}$ be worker $i$’s cholesterol level *after* they were assigned treatment $D_i$. Our goal is still to know how $D_i$ affects $Y_i$, and $X_{ij}$ may help increase the precision of our estimated treatment effect $\hat{\delta}$ by helping explain variation in sick days.
+
+At first glance, $X_{ij}$ may seem a good control, but the fact we are measuring cholesterol levels *after* they were assigned treatment is problematic since cholesterol levels may themselves be affected by a workplace wellness program ($D_i$). In such a case, $X_{ij}$ should be on the left-hand side as an outcome. Including it in the specification as a regressor would mean $D_i$ is no longer independent of $X_{ij}$ since the effect of $D_i$ on the $X_{ij}$ implies $\text{Cov}(D_i, X_{ij}) \neq 0$. This leads to a biased estimate:
+
+$$\hat{\delta} = \delta + \frac{\text{Cov}(D_i, X_{ij})}{\text{Var}(D)}$$
+
+meaning $\mathbb{E}[\hat{\delta}] \neq \delta_{ATE}$. 
+
+Because the inclusion of $X_{ij}$ leads to bias, we refer to it as a **bad control**. Baseline controls, then, must capture *pre*-treatment characteristics so as to avoid bias.
+
+Furthermore, to this idea of data collection timing, suppose your data $\{Y_i, D_i\}^n_{i=1}$ is obtained from the firm one year *after* the program is implemented; i.e., your data is from all workers employed at the firm at end of the year *after* randomization and assignment of treatment. 
+
+Assuming perfect randomization, the earlier point stands to reason that, with a lag of one year, a lack pre-treatment baseline data could make validating independence challenging. But to a subtler point, collecting data so far removed from treatment could lead to attrition bias---especially given the health-related experimental context. The data only includes workers remaining with the firm at the end of the year. This means that workers who left the company during the year, be it voluntarily or involuntarily, are excluded from the analysis. The issue is that workers who left before the end of the year might systematically differ in important ways from those who stay. If workers who didn't participate in the wellness program had worse health outcomes and left the firm as a result, the remaining units in the comparison group would likely show better outcomes than what actually occurred. This leads to a distorted estimate of the program's effect, as the sample is no longer representative of the original population.
+
+This phenomenon is what is referred to as **attrition bias**: a type of selection bias where participants drop out or are lost from a study over time, leading to a sample that is no longer representative of the original population. This can result in biased estimates of the treatment effect.
+
+The key extract from this, then, is that measurement plays an instrumental role in treatment effect estimation, and timing of data collection raises important considerations for the recovery of unbiased treatment effect estimates.x
 
 ## Appendix
 

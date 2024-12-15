@@ -22,7 +22,7 @@ We take samples of a target population to estimate population parameters:
 
 ![Sampling](/content/images/causal_inference/sampling.png)
 
-In technical terms, we denote the sample size, or the number of units in our sample (e.g., people), by the letter $n$ and the sample as the series:
+Formally, we denote the sample size, or the number of units in our sample (e.g., people), by the letter $n$ and the sample as the series:
 
 $$
 \{x_1, x_2, \dots, x_n\}
