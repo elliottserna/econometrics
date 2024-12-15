@@ -439,6 +439,7 @@ Sum of $(D_i - \bar{D})(\mathbf{X}_i - \bar{\mathbf{X}})$:
 $$5 + 2.5 + 0 + 5 + 2.5 + 5 + 2.5 + 0 + 2.5 + 5 = 30$$
 
 Finally:
+
 $$\text{Cov}_\text{sample}(D_i, \mathbf{X}_i) = \frac{1}{10} \times 30 = 3.0$$
 
 Despite random assignment, then the realized **sample covariance** is nonzero ($3.0$), reflecting **imbalance in finite samples**. This creates correlation between $D_i$ (treatment) and $\mathbf{X}_i$ (age), introducing bias if $\mathbf{X}_i$ is omitted in the regression.
