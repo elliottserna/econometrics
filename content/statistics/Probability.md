@@ -315,21 +315,27 @@ In general, CLT applies when $n\geq 30$ at minimum. But, the actual minimum size
 Models a single trial with two outcomes: success ($1$) or failure ($0$).
 
   **Formula (PMF)**:  
+  
   $$ \text{Pr}(X = x) = p^x (1-p)^{1-x}, \; x \in \{0, 1\} $$
+  
   where $p$ is the probability of success.
 
 #### The Binomial Distribution 
 Models the number of successes in $n$ independent Bernoulli trials.  
 
   **Formula (PMF)**:  
+
   $$ \text{Pr}(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \; k = 0, 1, \ldots, n $$
+  
   where $p$ is the probability of success.
 
 #### The Negative Binomial Distribution
 Models the number of trials needed to achieve $r$ successes in a sequence of independent Bernoulli trials.  
 
 **Formula (PMF)**:  
+
 $$ \text{Pr}(X = k) = \binom{k+r-1}{r-1} p^r (1-p)^k, \; k = 0, 1, 2, \ldots $$  
+
 where $p$ is the probability of success and $r > 0$ is the desired number of successes.
 
 ### The Geometric Distributions
@@ -338,63 +344,81 @@ where $p$ is the probability of success and $r > 0$ is the desired number of suc
 Models the number of trials until the first success in a series of Bernoulli trials. 
 
 **Formula (PMF)**:  
+
 $$ \text{Pr}(X = k) = (1 - p)^{k - 1} p $$
+
 where $k = 1, 2, 3, \dots$ and $p$ is the probability of success.
 
 #### The Hypergeometric Distribution
 Models the probability of $k$ successes in $n$ draws from a population of $N$ items containing $K$ successes, *without replacement*.  
 
 **Formula (PMF)**:  
+
 $$ \text{Pr}(X = k) = \frac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}, \; \max(0, n-(N-K)) \leq k \leq \min(n, K) $$
 
 ### The Poisson Distribution
 Models the number of events occurring in a fixed interval of time or space, given a constant average rate $\lambda$. 
 
 **Formula (PMF)**:  
+
 $$ \text{Pr}(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \; k = 0, 1, 2, \ldots $$  
+
 where $\lambda > 0$ is the mean number of occurrences.
 
 ### The Exponential Distribution
 Models the time between events in a Poisson process.
 
 **Formula (PDF)**: 
+
 $$ f(x) = \lambda e^{-\lambda x} \quad \text{for } x \geq 0 $$
+
 where $\lambda$ is the rate of occurrence.
 
 ### The Normal Distribution
 A continuous distribution describing a symmetric, bell-shaped curve defined by its mean $\mu$ and standard deviation $\sigma$.  
 
 **Formula (PDF)**:  
+
 $$ f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \; -\infty < x < \infty $$  
+
 where $\mu$ is the mean and $\sigma^2$ is the variance.
 
 ### The Gamma Distribution
 A continuous distribution modeling the time until $k$ events occur in a Poisson process.  
 
 **Formula (PDF)**:  
+
 $$ f(x) = \frac{\beta^\alpha x^{\alpha-1} e^{-\beta x}}{\Gamma(\alpha)}, \; x > 0 $$  
+
 where $\alpha > 0$ is the shape parameter, $\beta > 0$ is the rate parameter, and $\Gamma(\alpha)$ is the gamma function.
 
 #### Gamma Function ($\Gamma(x)$):  
 The Gamma function is a continuous extension of the factorial function for real and complex numbers. It is defined as:  
+
 $$
 \Gamma(x) = \int_0^\infty t^{x-1} e^{-t} \, dt, \quad x > 0
 $$
+
 for integer $n$, $\Gamma(n) = (n-1)!$.
 
 ### The Beta Distribution
 A continuous distribution defined on $[0, 1]$, commonly used to model probabilities or proportions.  
 
 **Formula (PDF)**:  
+
 $$ f(x) = \frac{x^{\alpha-1} (1-x)^{\beta-1}}{\text{B}(\alpha, \beta)}, \; 0 < x < 1 $$  
+
 where $\alpha, \beta > 0$ are shape parameters, and $\text{B}(\alpha, \beta)$ is the beta function.
 
 #### Beta Function ($B(x, y)$):  
 The Beta function is another special function related to the Gamma function, often used in probability and statistics. It is defined as:  
+
 $$
 B(x, y) = \int_0^1 t^{x-1} (1-t)^{y-1} \, dt, \quad x > 0, y > 0
 $$
+
 It can also be expressed in terms of the Gamma function as:  
+
 $$
 B(x, y) = \frac{\Gamma(x)\Gamma(y)}{\Gamma(x + y)}
 $$
@@ -403,13 +427,16 @@ $$
 A generalization of the binomial distribution for multiple outcomes. It models the counts of outcomes in $n$ independent trials with $k$ categories.  
 
 **Formula (PMF)**:  
+
 $$ \text{Pr}(X_1 = x_1, \ldots, X_k = x_k) = \frac{n!}{x_1! \cdots x_k!} p_1^{x_1} \cdots p_k^{x_k} $$  
+
 where $p_i$ is the probability of the $i$-th category, $\sum_{i=1}^k p_i = 1$, and $\sum_{i=1}^k x_i = n$.
 
 ### The Bivariate Normal Distribution
 Describes two jointly normally distributed variables $X$ and $Y$ with means $\mu_X, \mu_Y$, variances $\sigma_X^2, \sigma_Y^2$, and correlation $\rho$.  
 
 **Formula (PDF)**:  
+
 $$
 f(x, y) = \frac{1}{2\pi \sigma_X \sigma_Y \sqrt{1-\rho^2}} \exp \left(-\frac{1}{2(1-\rho^2)} \left[\frac{(x-\mu_X)^2}{\sigma_X^2} + \frac{(y-\mu_Y)^2}{\sigma_Y^2} - \frac{2\rho(x-\mu_X)(y-\mu_Y)}{\sigma_X \sigma_Y} \right]\right)
 $$
@@ -418,12 +445,16 @@ $$
 All outcomes are equally likely within a defined range.
 
 **Formula (PDF)**:
+
 $$ f(x) = \frac{1}{b - a} \quad \text{for } a \leq x \leq b $$
+
 where $a$ is the minimum and $b$ the maximum.
 
 ### The Chi-Squared Distribution
 A distribution of the sum of squares of $k$ independent standard normal random variables.
 
-**Formula (PDF)**:     
+**Formula (PDF)**:
+
 $$ f(x; k) = \frac{1}{2^{k/2} \Gamma(k/2)} x^{k/2 - 1} e^{-x/2} \quad \text{for } x > 0 $$
+
 where $k$ is the degrees of freedom.
