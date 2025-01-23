@@ -167,7 +167,7 @@ The **variance** of a random variable is defined as the expected value of the sq
 
 $$
 \begin{align*}
-\text{Var}(X) &= E\left[(X - \mu)^2\right] \\ &= \mathbb{E}(X^2) - [\mathbb{E}(X)]^2
+\text{Var}(X) &= \mathbb{E}\left[(X - \mu)^2\right] \\ &= \mathbb{E}(X^2) - [\mathbb{E}(X)]^2
 \end{align*}
 $$
 
