@@ -152,7 +152,7 @@ Conditional expectation allows us to focus on a subset of data or scenarios by a
 In general, the relationship between conditional expectation and standard expectation can be written as:
 
 $$
-\mathbb{E}(X) = E\left[\mathbb{E}(X \mid Y)\right]
+\mathbb{E}(X) = \mathbb{E}\left[\mathbb{E}(X \mid Y)\right]
 $$
 
 This equation reflects that the overall expected value of $X$ can be broken down into the weighted average of its conditional expectations across all possible values of $Y$. This is known as the **Law of Iterated Expectations**. This property is particularly useful in probability theory and statistics for breaking complex expectations into simpler components.
@@ -271,9 +271,9 @@ The **standard normal distribution** is a special case of the normal distributio
 
 - **Z-Score**: Any normal random variable $X$ can be transformed into the standard normal distribution using a **Z-score**:
   
-  $$
-  Z = \frac{X - \mu}{\sigma}
-  $$
+$$
+Z = \frac{X - \mu}{\sigma}
+$$
 
   Where $Z=z$ is the standardized z-score for every $X=x$. This allows comparison of different normal distributions on the same scale.
 
