@@ -39,7 +39,7 @@ jobs:
     # Ensure widgets are rendered and executed
     - name: Execute notebooks and ensure widgets
       run: |
-        jupyter nbconvert --to html --execute --template full LLN_sim.ipynb
+        jupyter nbconvert --to html --execute --template full content/statistics/LLN_sim.ipynb
 
 
     # Build the book
