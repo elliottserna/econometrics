@@ -40,6 +40,7 @@ sphinx:
   extra_extensions:
     - sphinx.ext.mathjax
     - sphinx.ext.intersphinx
+    - jupyter_sphinx
   config:
     html_theme: "quantecon_book_theme"
     html_theme_options:
