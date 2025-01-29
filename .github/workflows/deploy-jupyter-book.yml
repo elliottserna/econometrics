@@ -4,44 +4,49 @@ name: deploy-jupyter-book
 on:
   push:
     branches:
-    - master
-    - main
-    # If your git repository has the Jupyter Book within some-subfolder next to
-    # unrelated files, you can make this run only if a file within that specific
-    # folder has been modified.
-    #
-    # paths:
-    # - some-subfolder/**
+      - master
+      - main
 
-# This job installs dependencies, builds the book, and pushes it to `gh-pages`
 jobs:
   deploy-book:
     runs-on: ubuntu-latest
     permissions:
       pages: write
       id-token: write
+
     steps:
     - uses: actions/checkout@v3
 
-    # Install dependencies
+    # Set up Python 3.11
     - name: Set up Python 3.11
       uses: actions/setup-python@v4
       with:
         python-version: 3.11
 
+    # Install dependencies
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
+        pip install nbconvert ipywidgets widgetsnbextension
+
+    # Enable the widgetsnbextension
+    - name: Enable widgetsnbextension
+      run: |
+        jupyter nbextension enable --py widgetsnbextension
 
     # (optional) Cache your executed notebooks between runs
-    # if you have config:
-    # execute:
-    #   execute_notebooks: cache
     - name: cache executed notebooks
       uses: actions/cache@v3
       with:
         path: _build/.jupyter_cache
         key: jupyter-book-cache-${{ hashFiles('requirements.txt') }}
+
+    # Ensure widgets are rendered and executed
+    - name: Execute notebooks and ensure widgets
+      run: |
+        for notebook in *.ipynb; do
+          jupyter nbconvert --to html --execute --template full "$notebook"
+        done
 
     # Build the book
     - name: Build the book
