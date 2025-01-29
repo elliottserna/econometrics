@@ -14,6 +14,7 @@ parts:
     - file: content/statistics/Data
     - file: content/statistics/Variables
     - file: content/statistics/Probability
+    - file: content/statistics/LLN_sim.ipynb
     - file: content/statistics/Estimation
     - file: content/statistics/Hypothesis-Test
     - file: content/statistics/Further-Study
