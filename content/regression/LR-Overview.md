@@ -2,7 +2,7 @@
 
 ## Definitions:
 
-**Linear Regression:** A statistical method used to analyze the relationship between variables in data.
+**Linear Regression:** A statistical method used to model the linear relationship between a dependent variable and one or more independent variables, often for purposes of inference or prediction.
 
 **Dependent Variable (Response Variable):** The variable we aim to predict or explain, typically denoted as $Y$.
 
@@ -27,7 +27,7 @@ Much of what we will explore in this section on linear regression is predicated 
 
 > **Mathematical Definition of Linearity:**
 >
->In mathematics, a function $f: \mathbb{R}^n \to \mathbb{R}$ is said to be **linear** if it satisfies the following two properties for all vectors $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$ and all scalars $c \in \mathbb{R}$:
+>In pure linear algebra, a function $f: \mathbb{R}^n \to \mathbb{R}$ is said to be **linear** if it satisfies the following two properties for all vectors $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$ and all scalars $c \in \mathbb{R}$:
 >
 >1. **Additivity**: 
 >
@@ -38,8 +38,12 @@ Much of what we will explore in this section on linear regression is predicated 
 > 
 >   $$
    f(c \cdot \mathbf{x}) = c \cdot f(\mathbf{x})$$
+>
+> Such functions are also called linear functionals.
 
 In the context of linear regression, linearity means that we are trying to express the relationship between a dependent variable (what we want to predict) and one or more independent variables (the predictors) in a way that fits a straight line.
+
+> **Note:** Linear regression models are linear in the parameters (i.e., the coefficients appear linearly), even if the predictors themselves are non-linear transformations of variables. For example, a model including $X^2$ or $\log(X)$ is still a linear model, so long as the regression is linear in the coefficients.
 
 ### Linear Forms
 
@@ -119,9 +123,9 @@ Y_{ijt} = \alpha +
 > - $T_{2it}$: An indicator variable that equals 1 if school $i$ is assigned to the second year of deworming treatment in year $t$ and 0 otherwise. This variable captures the effect of the second treatment year.
 >
 > **Covariates**: 
-> - $\mathbf{X}^\prime$: A vector of additional school and pupil characteristics that may influence the health or education outcomes. These could include factors such as socioeconomic status, prior health metrics, and school resources.
+> - $\mathbf{X}^\prime$: A row vector of additional school and pupil characteristics that may influence the health or education outcomes. These could include factors such as socioeconomic status, prior health metrics, and school resources.
 >
-> - $\delta$: Coefficients associated with the covariates $\mathbf{X}^\prime$, indicating the extent to which changes in these characteristics affect the outcome $Y_{ijt}$.
+> - $\delta$: A column vector of coefficients associated with the covariates $\mathbf{X}^\prime$, indicating the extent to which changes in these characteristics affect the outcome $Y_{ijt}$.
 >
 > **Dummies/Interactions (Type 1)**: 
 > - $N_{dit}^T$: The total number of pupils in primary schools within distance $d$ from school $i$ in year $t$, where schools are randomly assigned to deworming treatment. This variable accounts for the local population density of treated schools that might affect treatment outcomes.
@@ -163,6 +167,8 @@ $$ \mathbf{v} = \begin{bmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{bmatrix} $$
 $$ \mathbf{v}^\top = [v_1, v_2, \ldots, v_n] $$
 
 Generally, a vector $\mathbf{v}$ will be column vector. We can reorder the column vector into a row vector by transposing the vector, or flipping the vector across its diagonal. The superscripted $\top$ on $\mathbf{v}^\top$ denotes the transpose.
+
+> **Note:** $\top$ and $^\prime$ both denote a transpose. $\top$ is more common in purely mathematical contexts, while $^\prime$ is standard in applied econometric work.
 
 #### Operations on Vectors
 
@@ -208,49 +214,74 @@ When we refer to the *elements* within a matrix, however, we denote every elemen
 
 For example, we'll index an element $a_{ij}$ to be the element $a$ in the $i$-th row and the $j$-th column.
 
-
 > ### Note on Notation
-> In linear algebra, the notation for vectors and matrices follows a few conventions to indicate different levels of elements:
-> 
-> - **Boldface uppercase letters** like $\mathbf{A}$ represent **entire matrices**.
-> - **Plain uppercase letters with subscript indexes** like $A_{ij}$ represent **collections of scalar elements** within a matrix (i.e., a vector within a matrix).
-> - **Boldface lowercase letters** like $\mathbf{v}$ represent **vectors**.
-> - **Plain lowercase letters with subscript indexes** like $a_{ij}$ represent **individual scalar elements** within a matrix.
-> 
-> For example, in the case of a matrix $\mathbf{A}$:
-> 
-> $$ \mathbf{A} = \begin{bmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{bmatrix} $$
 >
-> - $\mathbf{A}$ is the entire matrix.
-> - $A_{ij}$ (uppercase) refers to the collection of elements at the  $i$-th and $j$-th positions of the matrix $\mathbf{A}$ (depending on context) with rows up to the $i$-th element, usually treated as a vector.
-> - $a_{ij}$ (lowercase) refers to the element at the $i$-th row and $j$-th column.
+> In linear algebra and regression, notation conventions help clarify the structure and level of objects:
 >
-> Let's say, instead, we define $\mathbf{A}$ as:
-> 
-> $$ \mathbf{A} = \begin{bmatrix} x_{1} & y_{1} & z_{1} \\ x_{2} & y_{2} & z_{2} \\ x_{3} & y_{3} & z_{3} \end{bmatrix} $$
+> * **Boldface uppercase letters** like $\mathbf{A}$ represent **matrices**.
+> * **Boldface lowercase letters** like $\mathbf{v}$ represent **vectors**.
+> * **Plain lowercase letters with subscript indexes** like $a_{ij}$ represent **individual scalar elements** within a matrix or vector.
+> * **Plain uppercase letters** like $X_j$, when used without bold, often refer to **single variables** (e.g., a column of a matrix), though this can vary by context. For this reason, these can represent vectors as well.
 >
-> - $\mathbf{A}$ is the entire matrix.
-> - $X_{i}$ (uppercase) is the collection of all $x$ elements (i.e., the **$\mathbf{x}$ vector**) in the matrix $\mathbf{A}$ with rows up to the $i$-th element.
-> - $x_{i}$ (lowercase) refers to the element at the $i$-th row in the collection (vector) of $X_i$.
+> For example, consider the matrix:
 >
-> Where the same logic applies across the $\mathbf{x}$, $\mathbf{y}$, and $\mathbf{z}$ vectors.
+> $$\mathbf{A} = \begin{bmatrix} a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33} \end{bmatrix}$$
+>
+> * $\mathbf{A}$ is the entire matrix.
+> * $a_{ij}$ refers to the scalar in the $i$-th row and $j$-th column.
+>
+> Or if we define:
+>
+> $$\mathbf{A} = \begin{bmatrix}
+x_1 & y_1 & z_1 \\
+x_2 & y_2 & z_2 \\
+x_3 & y_3 & z_3
+\end{bmatrix}$$
+>
+> * $\mathbf{A}$ is still the full matrix.
+> * Each column (e.g., $x_1, x_2, x_3$) could be interpreted as a **variable**, and the full column as a vector of values for that variable.
+> * For instance, the **vector of all $x$-values** across observations might be referred to as $\mathbf{x}$ (or $X$).
 >
 > ### Notation in Linear Regression
 >
-> In the earlier example from the Miguel & Kremer paper, we have:
+> Consider the example from the Miguel & Kremer paper:
 >
 > $$
 Y_{ijt} = \alpha + \beta_1 T_{1it} + \beta_2 T_{2it} + \mathbf{X}^\prime \delta + \cdots$$
 >
-> Here, $T_{1it}$ and $T_{2it}$ are collections of elements of $T_1$ and $T_2$ in the dataset with resepctive $\beta$ scalar coefficients. 
-> 
-> $\mathbf{X}^\prime$ is defined as a "vector of additional school and pupil characteristics." But, where each characteristic contains entry for every individual $i$, $\mathbf{X}$ is really a *matrix* containing vectors for every characteristic (variable). $\mathbf{X}$, then, more closely follows the second specification of $\mathbf{A}$ from above.
+> * $T_{1it}$ and $T_{2it}$ are **scalar-valued variables**—specific values of treatment indicators for observation $i$ at time $t$. These are not bolded because they are individual variables applied elementwise.
 >
-> Lastly, we notice the prime on $\mathbf{X}^\prime$. Whereas transposes are usually denoted using a $\top$ superscript, they can also be denoted with a prime. $\mathbf{X}^\prime$ is then multiplied by $\delta$. It is convention that the regression coefficient on a matrix of characteristic vectors is placed after the matrix as opposed to before. 
-> 
-> We can write $\mathbf{X}^\prime \delta$ as:
+> * $\mathbf{X}$ is a **matrix of covariates**, one row per observation, one column per variable (e.g., student characteristics like age, gender, etc.). The boldface indicates that $\mathbf{X}$ represents **multiple variables simultaneously**.
 >
-> $$ \begin{bmatrix} x_{1} & x_{2} & x_{3} \\ y_{1} & y_{2} & y_{3} \\ z_{1} & z_{2} & z_{3} \end{bmatrix} \delta = \begin{bmatrix} \delta x_1 + \delta x_2 + \delta x_3 \\ \delta y_1 + \delta y_2 + \delta y_3 \\ \delta z_1 + \delta z_2 + \delta z_3 \end{bmatrix}$$
+> * $\delta$ is a **vector of coefficients** (one for each covariate), and $\mathbf{X}^\prime \delta$ denotes the linear combination of those covariates with their associated effects. Here, the transpose ($\prime$) is equivalent to the more common $\top$.
+>
+> To illustrate:
+> 
+>$$\mathbf{X} = \begin{bmatrix}
+x_{11} & x_{12} & x_{13} \\
+x_{21} & x_{22} & x_{23} \\
+x_{31} & x_{32} & x_{33}
+\end{bmatrix}, \quad
+\delta = \begin{bmatrix}
+\delta_1 \\
+\delta_2 \\
+\delta_3
+\end{bmatrix}$$
+>
+> Then:
+> $$\mathbf{X} \delta = \begin{bmatrix}
+x_{11} \delta_1 + x_{12} \delta_2 + x_{13} \delta_3 \\
+x_{21} \delta_1 + x_{22} \delta_2 + x_{23} \delta_3 \\
+x_{31} \delta_1 + x_{32} \delta_2 + x_{33} \delta_3 \end{bmatrix}$$
+>
+> This expression gives a vector of predicted outcomes—one per observation—from the linear combination of covariates and their coefficients.
+>
+> **Key Distinction**:
+> $\mathbf{X}$ is bold because it bundles multiple variables together as a matrix.
+> $T_{1it}$ and $T_{2it}$ are not bold because they are individual scalar variables, even though they vary over observations and time.
+
 
 #### Operations on Matrices
 
